@@ -15,6 +15,9 @@ plugins {
 
     //jacoco plugin
     id 'jacoco'
+
+    //the pmd plugin for code quality
+    id 'pmd'
 }
 
 repositories {
@@ -76,6 +79,11 @@ jar {
         configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
     }
 
+}
+
+pmd {
+    ignoreFailures = true
+    pmdTest.enabled= true
 }
 
 test.finalizedBy(jacocoTestReport, jar)
