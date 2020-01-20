@@ -18,11 +18,13 @@ jobs:
       
 
   test:
-     
+   
     runs-on: [ubuntu-latest]
     
+    needs: build
     steps:
-      - uses: build
+      - uses: actions/checkout@v1
       - name: BlackBox
         run: ./gradlew test
+        
         
