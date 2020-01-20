@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class AppTest {
-    @Test void appHasAGreeting() {
+
+    @Test
+    public void appHasAGreeting() {
         Assertions.assertEquals(1,1);
     }
 }

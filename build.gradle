@@ -18,6 +18,8 @@ repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+
+    mavenCentral()
 }
 
 dependencies {
@@ -39,4 +41,25 @@ application {
 test {
     // Use junit platform for unit tests
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed", "standardOut", "standardError"
+    }
 }
+
+jar {
+    manifest {
+        attributes(
+                "Main-Class": "App.Demo",
+                "Built-by" : "Jorge Moreira, Miguel Costa",
+                "Scope" : "Trabalho Estrutura de Dados"
+
+        )
+    }
+
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+
+}
+
+test.finalizedBy(jar)
