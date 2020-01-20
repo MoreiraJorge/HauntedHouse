@@ -3,7 +3,15 @@
  */
 package HauntedHouse;
 
+/**
+ * Main Class
+ * @author Jorge Moreira, Miguel Costa
+ */
 public class App {
+    /**
+     * main method
+     * @param args
+     */
     public static void main(String[] args) {
         System.out.println("");
     }

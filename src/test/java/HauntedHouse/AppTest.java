@@ -6,8 +6,15 @@ package HauntedHouse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Draft test class
+ * @author Jorge Moreira, Miguel Costa
+ */
 class AppTest {
 
+    /**
+     * draft test method
+     */
     @Test
     public void appHasAGreeting() {
         Assertions.assertEquals(1,1);
