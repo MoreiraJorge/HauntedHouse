@@ -29,7 +29,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: BlackBox Test Report
-          path: build/reports/tests/test/index.html
+          path: build/reports/tests/test/*
         
         
         
