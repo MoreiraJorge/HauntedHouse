@@ -26,5 +26,10 @@ jobs:
       - uses: actions/checkout@v1
       - name: BlackBox tests
         run: ./gradlew test
+      - uses: actions/upload-artifact@v1
+        with:
+          name: BlackBox Test Report
+          path: build/test-results/test/TEST-*.xml
+        
         
         
