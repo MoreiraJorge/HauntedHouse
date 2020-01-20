@@ -43,6 +43,6 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: Jacoco Test Report
-          path: build/reports/jacocoHtml
+          path: build/jacocoHtml
         
         
