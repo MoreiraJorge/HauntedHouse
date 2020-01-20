@@ -20,4 +20,4 @@ jobs:
     
     steps:
       - name: BlackBox
-        run: ./gradlew test
+        run: ./gradle test
