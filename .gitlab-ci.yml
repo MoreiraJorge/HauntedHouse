@@ -1,0 +1,60 @@
+image: java:8-jdk
+
+stages:
+  - build
+  - test
+  - QA
+
+before_script:
+  - echo "Start Automated Build"
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+  - chmod +x ./gradlew
+
+cache:
+  paths:
+    - .gradle/wrapper
+    - .gradle/caches
+
+build:
+  stage: build
+  script:
+    - ./gradlew assemble
+  artifacts:
+    paths:
+      - build/libs/*.jar
+    expire_in: 1 week
+#  tags:
+#      - estg
+
+test_black_box:
+  stage: test
+  script:
+    - ./gradlew test
+  artifacts:
+    paths:
+      - build/test-results/test/TEST-*.xml
+#  tags:
+#      - estg
+
+test_white_box:
+  stage: test
+  script:
+    - ./gradlew jacocoTestReport
+  artifacts:
+    paths:
+      - build/reports/jacoco*
+#  tags:
+#      - estg
+
+Code_Practices:
+  stage: QA
+  script:
+    - ./gradlew pmdMain
+  artifacts:
+    paths:
+      - build/reports/pmd/main.html
+#  tags:
+#      - estg
+
+after_script:
+  - echo "End Automated Build"
