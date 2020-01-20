@@ -39,7 +39,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: WhiteBox tests
-        run: ./gradlew jacocoTestReport
+        run: |
+          ./gradlew test
+          ./gradlew jacocoTestReport
       - uses: actions/upload-artifact@v1
         with:
           name: Jacoco Test Report
