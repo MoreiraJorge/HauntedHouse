@@ -34,7 +34,7 @@ jobs:
   WhiteBox_tests:
     
     runs-on: [ubuntu-latest]
-    needs: build
+    needs: BlackBox_tests
     
     steps:
       - uses: actions/checkout@v1
@@ -49,7 +49,7 @@ jobs:
   QA:
 
     runs-on: [ubuntu-latest]
-    needs: [BlackBox_tests, WhiteBox_tests]
+    needs: WhiteBox_tests
 
     steps:
       - uses: actions/checkout@v1
