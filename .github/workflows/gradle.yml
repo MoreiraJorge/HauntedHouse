@@ -49,7 +49,7 @@ jobs:
   QA:
 
     runs-on: [ubuntu-latest]
-    needs: WhiteBox_tests, BlackBox tests
+    needs: [BlackBox_tests, WhiteBox_tests]
 
     steps:
       - uses: actions/checkout@v1
