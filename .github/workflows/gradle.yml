@@ -41,7 +41,6 @@ jobs:
       - name: WhiteBox tests
         run: |
           ./gradlew test
-          ./gradlew jacocoTestReport
       - uses: actions/upload-artifact@v1
         with:
           name: Jacoco Test Report
