@@ -7,6 +7,7 @@ import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.util.Iterator;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class Menu {
 
     private String name;

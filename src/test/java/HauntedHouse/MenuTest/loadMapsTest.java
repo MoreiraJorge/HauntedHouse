@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class loadMapsTest {
 
     Menu menu;
