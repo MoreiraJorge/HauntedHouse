@@ -7,12 +7,23 @@ import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.util.Iterator;
 
+/**
+ * Class with menu operations
+ * @author Jorge, Miguel
+ */
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class Menu {
 
     private String name;
     private int points;
 
+    /**
+     * method that loads the map information
+     * from a json file given a
+     * @param fileLocation file location
+     * @return true if the map is loaded,
+     * or false if it is invalid
+     */
     public boolean loadMap(String fileLocation) {
         JSONParser parser = new JSONParser();
 
