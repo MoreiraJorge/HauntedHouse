@@ -6,12 +6,12 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests class for hasGhost method
- * @author Jorge
+ * @author Jorge, Miguel
  */
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class hasGhostTests {
     Room room;
-
+    
     /**
      * test if the method returns true
      * if the room has ghostCost, meaning it has
