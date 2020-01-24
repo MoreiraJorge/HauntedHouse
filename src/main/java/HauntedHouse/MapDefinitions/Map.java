@@ -1,11 +1,14 @@
 package HauntedHouse.MapDefinitions;
 
+import Structures.Lists.UnorderedArray;
+import Structures.Lists.UnorderedListADT;
+
 /**
- * map definition class
+ * Map definition class
  * @author Jorge, Miguel
  */
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
-public class map {
+public class Map {
 
     private String title;
     private int points;
@@ -16,13 +19,13 @@ public class map {
      * sera que se podia guardalos num array e cada posição seria associada
      * a um vertice ?
      */
-    private room[] roomList;
+    private UnorderedListADT<Room> roomList;
 
 
-    public map(String title, int roomQuanity) {
+    public Map(String title) {
         this.title = title;
         this.points = 100;
-        this.roomList = new room[roomQuanity];
+        this.roomList = new UnorderedArray();
         //quando tivermos o grafo retificar o constructor se quiseres colocar aqui o grafo
     }
 
@@ -42,14 +45,14 @@ public class map {
     }
 
     /**
-     * aqui poderias mandar o array de rooms
-     * ir buscar o custo dos fantasmas a cada room
-     * e ao adicionar o room, adicionar também as ligaçoes com
+     * aqui poderias mandar o array de Rooms
+     * ir buscar o custo dos fantasmas a cada Room
+     * e ao adicionar o Room, adicionar também as ligaçoes com
      * os custos dos fantasmas? ou seria melhor em metododos
      * separados?
      * @return false if not added
      */
-    public boolean addRoomsToMap(room[] rooms){
+    public boolean addRoomsToMap(Room[] Rooms){
         return false;
     }
 

@@ -1,14 +1,17 @@
 package HauntedHouse.MapDefinitions;
 
+import Structures.Lists.UnorderedArray;
+import Structures.Lists.UnorderedListADT;
+
 /**
- * room definition class
+ * Room definition class
  * @author Jorge, Miguel
  */
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
-public class room {
+public class Room {
 
     protected String roomName;
-    protected String[] connections;
+    protected UnorderedListADT<String> connections;
     protected int ghostCost;
 
     /**
@@ -23,9 +26,9 @@ public class room {
      * @param roomName
      * @param numConnections
      */
-    public room(String roomName, int numConnections, int ghostCost) {
+    public Room(String roomName, int numConnections, int ghostCost) {
         this.roomName = roomName;
-        this.connections = new String[numConnections];
+        this.connections = new UnorderedArray();
         this.ghostCost = ghostCost;
     }
 
