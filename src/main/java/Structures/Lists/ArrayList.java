@@ -23,9 +23,9 @@ public class ArrayList<T> implements ListADT<T> {
     }
 
     @Override
-    public T removeFirst() {
+    public T removeFirst() throws ListExceptions {
         if (isEmpty()) {
-            return null;
+            throw new ListExceptions(ListExceptions.EMPTY_LIST);
         }
 
         T tmp = list[0];
@@ -40,9 +40,9 @@ public class ArrayList<T> implements ListADT<T> {
     }
 
     @Override
-    public T removeLast() {
+    public T removeLast() throws ListExceptions {
         if (isEmpty()) {
-            return null;
+            throw new ListExceptions(ListExceptions.EMPTY_LIST);
         }
         T tmp = list[rear - 1];
         list[rear - 1] = null;
@@ -54,11 +54,11 @@ public class ArrayList<T> implements ListADT<T> {
     }
 
     @Override
-    public T remove(T element) {
+    public T remove(T element) throws ListExceptions {
         int position = search(element);
 
         if (position == -1) {
-            return null;
+            throw new ListExceptions(ListExceptions.ELEMENT_NOT_FOUND);
         }
 
         T tmp = list[position];

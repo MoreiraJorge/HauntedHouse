@@ -32,10 +32,7 @@ public class Room {
      * @return true if the room has a ghost
      */
     public boolean hasGhost(){
-        if(ghostCost!=0){
-            return true;
-        }
-        return false;
+        return (!(ghostCost ==0));
     }
 
 

@@ -9,21 +9,21 @@ public interface ListADT<T> extends Iterable<T> {
      *
      * @return the first element from this list
      */
-    public T removeFirst();
+    public T removeFirst() throws ListExceptions;
 
     /**
      * Removes and returns the last element from this list.
      *
      * @return the last element from this list
      */
-    public T removeLast();
+    public T removeLast() throws ListExceptions;
 
     /**
      * Removes and returns the specified element from this list.
      *
      * @param element the element to be removed from the list
      */
-    public T remove(T element);
+    public T remove(T element) throws ListExceptions;
 
     /**
      * Returns a reference to the first element in this list.
