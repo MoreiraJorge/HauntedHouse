@@ -1,5 +1,9 @@
 package Structures.Network;
 
+/**
+ * Edge class that defines graph edges
+ * @param <T>
+ */
 public class Edge<T> {
 
     protected NetworkNode<T> nodeTo;

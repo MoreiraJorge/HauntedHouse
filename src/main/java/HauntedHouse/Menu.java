@@ -11,7 +11,6 @@ import java.util.Iterator;
  * Class with menu operations
  * @author Jorge, Miguel
  */
-@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class Menu {
 
     private String name;

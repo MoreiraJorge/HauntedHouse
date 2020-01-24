@@ -7,7 +7,6 @@ import Structures.Lists.UnorderedListADT;
  * Map definition class
  * @author Jorge, Miguel
  */
-@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class Map {
 
     private String title;

@@ -7,7 +7,6 @@ import Structures.Lists.UnorderedListADT;
  * Room definition class
  * @author Jorge, Miguel
  */
-@SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class Room {
 
     protected String roomName;
