@@ -11,13 +11,23 @@ import org.junit.jupiter.api.Test;
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class hasGhostTests {
     Room room;
-
+    
+    /**
+     * test if the method returns true
+     * if the room has ghostCost, meaning it has
+     * a ghost
+     */
     @Test
     public void testIfRoomHasGhost(){
         room = new Room("Kitchen",5,15);
         Assertions.assertTrue(room.hasGhost());
     }
 
+    /**
+     * test if the method returns false
+     * if the room has ghostCost equals to zero,
+     * meaning it has not a ghost
+     */
     @Test
     public void testIfRoomHasNoGhost(){
         room = new Room("Kitchen",5,0);
