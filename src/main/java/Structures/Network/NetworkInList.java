@@ -1,14 +1,14 @@
 package Structures.Network;
 
-import BinaryTree.BinaryTreeExceptions;
-import Graph.*;
-import Lists.ListExceptions;
-import Lists.UnorderedArray;
-import Lists.UnorderedListADT;
-import PriorityQueue.PriorityQueue;
-import Queue.LinkedQueue;
-import Stack.EmptyCollectionException;
-import Stack.LinkedStack;
+import Structures.BinaryTree.BinaryTreeExceptions;
+import Structures.Graph.*;
+import Structures.Lists.ListExceptions;
+import Structures.Lists.UnorderedArray;
+import Structures.Lists.UnorderedListADT;
+import Structures.PriorityQueue.PriorityQueue;
+import Structures.Queues.LinkedQueue;
+import Structures.Stack.EmptyCollectionException;
+import Structures.Stack.LinkedStack;
 
 import java.util.Iterator;
 

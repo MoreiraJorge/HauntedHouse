@@ -1,8 +1,8 @@
 package Structures.Network;
 
-import BinaryTree.BinaryTreeExceptions;
-import Graph.GraphADT;
-import Graph.GraphExceptions;
+import Structures.BinaryTree.BinaryTreeExceptions;
+import Structures.Graph.GraphADT;
+import Structures.Graph.GraphExceptions;
 
 /**
  * NetworkADT defines the interface to a network.

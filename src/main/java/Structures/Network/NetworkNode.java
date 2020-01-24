@@ -1,7 +1,7 @@
 package Structures.Network;
 
-import Lists.UnorderedArray;
-import Lists.UnorderedListADT;
+import Structures.Lists.UnorderedArray;
+import Structures.Lists.UnorderedListADT;
 
 import java.util.Iterator;
 
