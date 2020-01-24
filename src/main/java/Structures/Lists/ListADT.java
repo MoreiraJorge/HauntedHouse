@@ -30,14 +30,14 @@ public interface ListADT<T> extends Iterable<T> {
      *
      * @return a reference to the first element in this list
      */
-    public T first();
+    public T first() throws ListExceptions;
 
     /**
      * Returns a reference to the last element in this list.
      *
      * @return a reference to the last element in this list
      */
-    public T last();
+    public T last() throws ListExceptions;
 
     /**
      * Returns true if this list contains the specified target

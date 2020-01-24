@@ -11,18 +11,13 @@ import Structures.Lists.UnorderedListADT;
 public class Room {
 
     protected String roomName;
+
     protected UnorderedListADT<String> connections;
+
     protected int ghostCost;
 
     /**
-     * será que n era
-     * melhor por por exemplo um boolean hasGhost?
-     * so pra saber que o node tem fantasma, pode servir
-     * pro gameplay a fazer a gui, mas isso pode-se deixar pra mais tarde.
-     */
-
-    /**
-     *
+     * Constructor for a room
      * @param roomName
      * @param numConnections
      */
@@ -31,5 +26,17 @@ public class Room {
         this.connections = new UnorderedArray();
         this.ghostCost = ghostCost;
     }
+
+    /**
+     * If the room has a cost, it has a ghost
+     * @return true if the room has a ghost
+     */
+    public boolean hasGhost(){
+        if(ghostCost!=0){
+            return true;
+        }
+        return false;
+    }
+
 
 }

@@ -82,17 +82,17 @@ public class ArrayList<T> implements ListADT<T> {
     }
 
     @Override
-    public T first() {
+    public T first() throws ListExceptions {
         if (isEmpty()) {
-            return null;
+            throw new ListExceptions(ListExceptions.EMPTY_LIST);
         }
         return list[0];
     }
 
     @Override
-    public T last() {
+    public T last() throws ListExceptions {
         if (isEmpty()) {
-            return null;
+            throw new ListExceptions(ListExceptions.EMPTY_LIST);
         }
         return list[rear - 1];
     }
