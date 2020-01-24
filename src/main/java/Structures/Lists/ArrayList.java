@@ -3,7 +3,7 @@ package Structures.Lists;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 
-public class ArrayList<T> implements ListADT<T> {
+abstract class ArrayList<T> implements ListADT<T> {
 
     protected T[] list;
     private final static int DEFAULT_CAPACITY = 10;
