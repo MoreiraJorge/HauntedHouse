@@ -87,6 +87,10 @@ jar {
 pmd {
     ignoreFailures = true
     pmdTest.enabled= true
+    ruleSets = [
+            'java-basic',
+            'java-braces'
+    ]
 }
 
 test.finalizedBy(jacocoTestReport, jar)
