@@ -64,9 +64,11 @@ public class Map {
         Room destRoom = getRoomFromName(destination);
 
         networkMap.addEdge(sourceRoom, destRoom, destRoom.getGhostCost());
+        sourceRoom.addConnection(destRoom);
 
         if (destRoom.getRoomName().equals(ENTRANCE) || destRoom.getRoomName().equals(EXIT)) {
             networkMap.addEdge(destRoom, sourceRoom, sourceRoom.getGhostCost());
+            destRoom.addConnection(sourceRoom);
         }
     }
 
