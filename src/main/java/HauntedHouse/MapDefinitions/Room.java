@@ -83,10 +83,20 @@ public class Room {
     }
 
     /**
+     * Method to obtain the connections of a Room
+     *
+     * @return Connections
+     */
+    public UnorderedListADT<Room> getConnections() {
+        return connections;
+    }
+
+    /**
      * Method that returns number of doors
+     *
      * @return number of doors
      */
-    public int numberOfDoors(){
+    public int numberOfDoors() {
         return connections.size();
     }
 

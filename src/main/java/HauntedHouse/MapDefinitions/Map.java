@@ -3,7 +3,6 @@ package HauntedHouse.MapDefinitions;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.UnorderedArray;
 import Structures.Lists.UnorderedListADT;
-import Structures.Network.NetworkInList;
 
 import java.util.Iterator;
 
@@ -14,11 +13,10 @@ import java.util.Iterator;
  */
 public class Map {
 
-    private static final String ENTRANCE = "entrada";
-    private static final String EXIT = "exterior";
+    public static final String ENTRANCE = "entrada";
+    public static final String EXIT = "exterior";
     private String title;
     private int points;
-    private NetworkInList<Room> networkMap;
     private UnorderedListADT<Room> addedRooms;
     private Room entrance;
     private Room exit;
@@ -31,15 +29,29 @@ public class Map {
      */
     public Map(String title, int points) {
         this.title = title;
-        this.points = points;
-        this.networkMap = new NetworkInList();
         this.addedRooms = new UnorderedArray<>();
         this.entrance = new Room(ENTRANCE, 0);
         this.exit = new Room(EXIT, 0);
-        this.networkMap.addVertex(entrance);
-        this.networkMap.addVertex(exit);
         this.addedRooms.addToRear(entrance);
         this.addedRooms.addToRear(exit);
+    }
+
+    /**
+     * Method to obtain the name of the map
+     *
+     * @return title
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Method to obtain the aumount of points of the map
+     *
+     * @return points
+     */
+    public int getPoints() {
+        return points;
     }
 
     /**
@@ -48,7 +60,6 @@ public class Map {
     public void addRoomToMap(String roomName, int ghostCost) {
         Room room = new Room(roomName, ghostCost);
         addedRooms.addToRear(room);
-        networkMap.addVertex(room);
     }
 
     /**
@@ -59,15 +70,13 @@ public class Map {
      * @throws MapExceptions
      * @throws GraphExceptions
      */
-    public void addConnectionsBetweenRooms(String source, String destination) throws MapExceptions, GraphExceptions {
+    public void addConnectionsBetweenRooms(String source, String destination) throws MapExceptions {
         Room sourceRoom = getRoomFromName(source);
         Room destRoom = getRoomFromName(destination);
 
-        networkMap.addEdge(sourceRoom, destRoom, destRoom.getGhostCost());
         sourceRoom.addConnection(destRoom);
 
         if (destRoom.getRoomName().equals(ENTRANCE) || destRoom.getRoomName().equals(EXIT)) {
-            networkMap.addEdge(destRoom, sourceRoom, sourceRoom.getGhostCost());
             destRoom.addConnection(sourceRoom);
         }
     }
@@ -100,8 +109,17 @@ public class Map {
         return room;
     }
 
+    /**
+     * Method to obtain the list of rooms of the map
+     *
+     * @return List of Rooms In Map
+     */
+    public UnorderedListADT<Room> getAddedRooms() {
+        return addedRooms;
+    }
+
     @Override
     public String toString() {
-        return networkMap.toString();
+        return addedRooms.toString();
     }
 }
