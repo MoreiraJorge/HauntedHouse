@@ -41,6 +41,7 @@ public class Menu {
             points = Math.toIntExact(pointLong);
 
             map = (JSONArray) jsonObject.get("mapa");
+            this.mapLoaded = true;
             return true;
         } catch (Exception e) {
             return false;
