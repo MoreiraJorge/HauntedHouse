@@ -15,6 +15,12 @@ public class Menu {
 
     private String name;
     private int points;
+    private JSONArray map;
+    private boolean mapLoaded;
+
+    public Menu() {
+        mapLoaded = false;
+    }
 
     /**
      * method that loads the map information
@@ -34,19 +40,14 @@ public class Menu {
             long pointLong = (long) jsonObject.get("pontos");
             points = Math.toIntExact(pointLong);
 
-            JSONArray map = (JSONArray) jsonObject.get("mapa");
-
-            System.out.println("Nome: " + name);
-            System.out.println("Pontos: " + points);
-            System.out.print("Mapa: ");
-            Iterator<JSONObject> iterator = map.iterator();
-            while (iterator.hasNext()) {
-                System.out.print("->" + iterator.next().get("aposento") + " ");
-            }
+            map = (JSONArray) jsonObject.get("mapa");
             return true;
         } catch (Exception e) {
             return false;
         }
     }
 
+    public boolean isMapLoaded() {
+        return mapLoaded;
+    }
 }
