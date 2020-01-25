@@ -1,6 +1,9 @@
 package HauntedHouse;
 
 import HauntedHouse.MapDefinitions.Map;
+import HauntedHouse.MapDefinitions.MapExceptions;
+import HauntedHouse.MapDefinitions.Room;
+import Structures.Graph.GraphExceptions;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -10,6 +13,7 @@ import java.util.Iterator;
 
 /**
  * Class with menu operations
+ *
  * @author Jorge, Miguel
  */
 public class Menu {
@@ -26,6 +30,7 @@ public class Menu {
     /**
      * method that loads the map information
      * from a json file given a
+     *
      * @param fileLocation file location
      * @return true if the map is loaded,
      * or false if it is invalid
@@ -53,11 +58,37 @@ public class Menu {
         return mapLoaded;
     }
 
-    public Map createMapStructure() throws MenuExceptions {
-        if(isMapLoaded() == false){
+    public Map createMapStructure() throws MenuExceptions, GraphExceptions, MapExceptions {
+        if (isMapLoaded() == false) {
             throw new MenuExceptions(MenuExceptions.MAP_NOT_LOADED);
         }
         Map chosenMap = new Map(name, points);
+        Iterator<JSONObject> itrJSon = map.iterator();
+
+        while (itrJSon.hasNext()) {
+            JSONObject tmpObject = itrJSon.next();
+
+            String roomName = (String) tmpObject.get("aposento");
+            long ghostCostLong = (long) tmpObject.get("fantasma");
+            int ghostCost = Math.toIntExact(ghostCostLong);
+
+
+            chosenMap.addRoomToMap(room);
+        }
+
+        itrJSon = map.iterator();
+
+        while (itrJSon.hasNext()){
+            JSONObject tmpObject = itrJSon.next();
+            String source = (String) tmpObject.get("aposento");
+            JSONArray destArray = (JSONArray) tmpObject.get("ligacoes");
+            Iterator<String> itrDest = destArray.iterator();
+
+            while (itrDest.hasNext()){
+                String dest = itrDest.next();
+                chosenMap.addConnectionsBetweenRooms(source, dest);
+            }
+        }
 
         return chosenMap;
     }
