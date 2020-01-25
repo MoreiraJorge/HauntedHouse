@@ -31,7 +31,7 @@ public class loadMapsTest {
     @Test
     public void loadMapWhenFileLocationIsValid(){
         fileLocation = "maps/mapa.json";
-        Assertions.assertTrue(menu.loadMap(fileLocation));
+        Assertions.assertTrue(menu.loadMapFile(fileLocation));
     }
 
     /**
@@ -42,6 +42,6 @@ public class loadMapsTest {
     @Test
     public void loadMapWhenFileLocationIsInValid(){
         fileLocation = "maps/x.json";
-        Assertions.assertFalse(menu.loadMap(fileLocation));
+        Assertions.assertFalse(menu.loadMapFile(fileLocation));
     }
 }
