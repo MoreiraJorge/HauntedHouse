@@ -18,7 +18,7 @@ public class GameWindow {
         JFrame f = new JFrame();
         f.setTitle("Game");
         f.add(new GameBoard());
-        f.setSize(500,600);
+        f.setSize(900,600);
         f.setLocationRelativeTo(null);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

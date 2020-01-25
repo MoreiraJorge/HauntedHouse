@@ -40,16 +40,16 @@ public class GameBoard extends JPanel implements ActionListener{
         for(int i = 0; i < 14; i++){
             for(int j = 0; j < 14; ++j){
                 if(m.getMap(j, i).equals("g")){
-                    g.drawImage(m.getGrass(), j * 32, i * 32, null);
+                    g.drawImage(m.getGrass(), j * 64, i * 64, null);
                 }
                 
                 if(m.getMap(j, i).equals("w")){
-                    g.drawImage(m.getWall(), j * 32, i * 32,null);
+                    g.drawImage(m.getWall(), j * 64, i * 64,null);
                 }
             }
         }
         
-        g.drawImage(p.getPlayer(), p.getTileX() * 32, p.getTileY() * 32, null);
+        g.drawImage(p.getPlayer(), p.getTileX()* 64, p.getTileY() * 64, null);
     }
 
     @Override
