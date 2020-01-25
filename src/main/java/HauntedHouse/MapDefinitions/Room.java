@@ -1,8 +1,5 @@
 package HauntedHouse.MapDefinitions;
 
-import Structures.Lists.UnorderedArray;
-import Structures.Lists.UnorderedListADT;
-
 /**
  * Room definition class
  *
@@ -23,10 +20,20 @@ public class Room {
         this.ghostCost = ghostCost;
     }
 
+    /**
+     * Method to get the room name
+     *
+     * @return Room name
+     */
     public String getRoomName() {
         return roomName;
     }
 
+    /**
+     * Method to return the cost of the ghost
+     *
+     * @return Cost of Ghost
+     */
     public int getGhostCost() {
         return ghostCost;
     }
@@ -38,5 +45,10 @@ public class Room {
      */
     public boolean hasGhost() {
         return (!(ghostCost == 0));
+    }
+
+    @Override
+    public String toString() {
+        return roomName;
     }
 }
