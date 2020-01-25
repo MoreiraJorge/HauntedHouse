@@ -21,9 +21,9 @@ public class Map {
     private UnorderedListADT<Room> roomList;
 
 
-    public Map(String title) {
+    public Map(String title, int points) {
         this.title = title;
-        this.points = 100;
+        this.points = points;
         this.roomList = new UnorderedArray();
         //quando tivermos o grafo retificar o constructor se quiseres colocar aqui o grafo
     }
