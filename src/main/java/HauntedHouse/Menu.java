@@ -1,5 +1,6 @@
 package HauntedHouse;
 
+import HauntedHouse.MapDefinitions.Map;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -50,5 +51,14 @@ public class Menu {
 
     public boolean isMapLoaded() {
         return mapLoaded;
+    }
+
+    public Map createMapStructure() throws MenuExceptions {
+        if(isMapLoaded() == false){
+            throw new MenuExceptions(MenuExceptions.MAP_NOT_LOADED);
+        }
+        Map chosenMap = new Map(name, points);
+
+        return chosenMap;
     }
 }
