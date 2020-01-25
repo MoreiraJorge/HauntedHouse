@@ -23,7 +23,7 @@ public class Menu {
      * @return true if the map is loaded,
      * or false if it is invalid
      */
-    public boolean loadMap(String fileLocation) {
+    public boolean loadMapFile(String fileLocation) {
         JSONParser parser = new JSONParser();
 
         try {
@@ -48,4 +48,5 @@ public class Menu {
             return false;
         }
     }
+
 }

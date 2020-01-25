@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * @author Miguel
  */
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
-public class loadMapsTest {
+public class loadMapsToFileTest {
 
     Menu menu;
     String fileLocation;
