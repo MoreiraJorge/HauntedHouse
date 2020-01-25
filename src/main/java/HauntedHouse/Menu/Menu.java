@@ -61,6 +61,13 @@ public class Menu {
         return mapLoaded;
     }
 
+    /**
+     * Method to create the network graph of the map
+     * @return Map
+     * @throws MenuExceptions
+     * @throws GraphExceptions
+     * @throws MapExceptions
+     */
     public Map createMapStructure() throws MenuExceptions, GraphExceptions, MapExceptions {
         if (isMapLoaded() == false) {
             throw new MenuExceptions(MenuExceptions.MAP_NOT_LOADED);
