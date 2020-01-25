@@ -3,6 +3,8 @@
  */
 package HauntedHouse;
 
+import HauntedHouse.Gui.GameWindow;
+
 /**
  * Main Class
  * @author Jorge Moreira, Miguel Costa
@@ -13,6 +15,6 @@ public class App {
      * @param args
      */
     public static void main(String[] args) {
-        System.out.println("");
+        new GameWindow();
     }
 }
