@@ -1,5 +1,9 @@
 package HauntedHouse.MapDefinitions;
 
+import Structures.Lists.ListExceptions;
+import Structures.Lists.UnorderedArray;
+import Structures.Lists.UnorderedListADT;
+
 /**
  * Room definition class
  *
@@ -9,6 +13,7 @@ public class Room {
 
     private String roomName;
     private int ghostCost;
+    private UnorderedListADT<Room> connections;
 
     /**
      * Constructor for a room
@@ -18,6 +23,7 @@ public class Room {
     public Room(String roomName, int ghostCost) {
         this.roomName = roomName;
         this.ghostCost = ghostCost;
+        this.connections = new UnorderedArray();
     }
 
     /**
@@ -45,6 +51,35 @@ public class Room {
      */
     public boolean hasGhost() {
         return (!(ghostCost == 0));
+    }
+
+    /**
+     * Method to add a connection between rooms
+     *
+     * @param room
+     */
+    public void addConnection(Room room) {
+        connections.addToRear(room);
+    }
+
+    /**
+     * Method to remove a connection between rooms
+     *
+     * @param room
+     * @throws ListExceptions
+     */
+    public void removeConnection(Room room) throws ListExceptions {
+        connections.remove(room);
+    }
+
+    /**
+     * Method to check if this room has a connection to another
+     *
+     * @param room
+     * @return boolean
+     */
+    public boolean hasConnection(Room room) {
+        return connections.contains(room);
     }
 
     @Override
