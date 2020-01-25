@@ -2,6 +2,7 @@ package HauntedHouse.MapDefinitions;
 
 import Structures.Lists.UnorderedArray;
 import Structures.Lists.UnorderedListADT;
+import Structures.Network.NetworkInList;
 
 /**
  * Map definition class
@@ -11,7 +12,7 @@ public class Map {
 
     private String title;
     private int points;
-    //private NetworkMatrix GraphMap????
+    private NetworkInList networkMap;
 
     /**
      * o mapa traz um conjunto de aposentos do json,
@@ -25,6 +26,8 @@ public class Map {
         this.title = title;
         this.points = points;
         this.roomList = new UnorderedArray();
+
+
         //quando tivermos o grafo retificar o constructor se quiseres colocar aqui o grafo
     }
 

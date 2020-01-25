@@ -19,7 +19,7 @@ public class hasGhostTests {
      */
     @Test
     public void testIfRoomHasGhost(){
-        room = new Room("Kitchen",5,15);
+        room = new Room("Kitchen",15);
         Assertions.assertTrue(room.hasGhost());
     }
 
@@ -30,7 +30,7 @@ public class hasGhostTests {
      */
     @Test
     public void testIfRoomHasNoGhost(){
-        room = new Room("Kitchen",5,0);
+        room = new Room("Kitchen",0);
         Assertions.assertFalse(room.hasGhost());
     }
 }
