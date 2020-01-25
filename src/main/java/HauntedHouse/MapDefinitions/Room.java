@@ -82,6 +82,14 @@ public class Room {
         return connections.contains(room);
     }
 
+    /**
+     * Method that returns number of doors
+     * @return number of doors
+     */
+    public int numberOfDoors(){
+        return connections.size();
+    }
+
     @Override
     public String toString() {
         return roomName;
