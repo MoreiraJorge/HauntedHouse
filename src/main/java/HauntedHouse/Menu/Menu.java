@@ -1,8 +1,7 @@
-package HauntedHouse;
+package HauntedHouse.Menu;
 
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
-import HauntedHouse.MapDefinitions.Room;
 import Structures.Graph.GraphExceptions;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -54,6 +53,10 @@ public class Menu {
         }
     }
 
+    /**
+     * Method to know if the map has already been loaded
+     * @return boolean
+     */
     public boolean isMapLoaded() {
         return mapLoaded;
     }
@@ -72,19 +75,18 @@ public class Menu {
             long ghostCostLong = (long) tmpObject.get("fantasma");
             int ghostCost = Math.toIntExact(ghostCostLong);
 
-
-            chosenMap.addRoomToMap(room);
+            chosenMap.addRoomToMap(roomName, ghostCost);
         }
 
         itrJSon = map.iterator();
 
-        while (itrJSon.hasNext()){
+        while (itrJSon.hasNext()) {
             JSONObject tmpObject = itrJSon.next();
             String source = (String) tmpObject.get("aposento");
             JSONArray destArray = (JSONArray) tmpObject.get("ligacoes");
             Iterator<String> itrDest = destArray.iterator();
 
-            while (itrDest.hasNext()){
+            while (itrDest.hasNext()) {
                 String dest = itrDest.next();
                 chosenMap.addConnectionsBetweenRooms(source, dest);
             }
