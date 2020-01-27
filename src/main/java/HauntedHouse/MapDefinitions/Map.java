@@ -144,6 +144,7 @@ public class Map {
      * @throws MapExceptions
      * @throws IOException
      */
+    @Generated
     public void printMapFromRoom(String room, boolean viewGhost) throws MapExceptions, IOException {
         Room startRoom = getRoomFromName(room);
         Iterator<Room> path = networkMap.iteratorBFS(startRoom);
@@ -175,6 +176,13 @@ public class Map {
         }
     }
 
+    /**
+     * Method to print the doors form a certain Room
+     *
+     * @param room      room
+     * @param viewGhost boolean to view ghosts
+     */
+    @Generated
     private void printDoorsFromRoom(Room room, boolean viewGhost) {
         System.out.println("Portas : ");
         Iterator<Room> doors = room.getConnectionsIterator();
