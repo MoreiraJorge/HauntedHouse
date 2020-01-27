@@ -4,7 +4,12 @@ import HauntedHouse.Generated;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.UnorderedArray;
 import Structures.Lists.UnorderedListADT;
+import Structures.Network.NetworkADT;
+import Structures.Network.NetworkInList;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Iterator;
 
 /**
@@ -18,6 +23,7 @@ public class Map {
     public static final String EXIT = "exterior";
     private String title;
     private int points;
+    private NetworkADT<Room> networkMap;
     private UnorderedListADT<Room> addedRooms;
     private Room entrance;
     private Room exit;
@@ -30,9 +36,13 @@ public class Map {
      */
     public Map(String title, int points) {
         this.title = title;
+        this.points = points;
+        this.networkMap = new NetworkInList<>();
         this.addedRooms = new UnorderedArray<>();
         this.entrance = new Room(ENTRANCE, 0);
         this.exit = new Room(EXIT, 0);
+        this.networkMap.addVertex(entrance);
+        this.networkMap.addVertex(exit);
         this.addedRooms.addToRear(entrance);
         this.addedRooms.addToRear(exit);
     }
@@ -62,6 +72,7 @@ public class Map {
      */
     public void addRoomToMap(String roomName, int ghostCost) {
         Room room = new Room(roomName, ghostCost);
+        networkMap.addVertex(room);
         addedRooms.addToRear(room);
     }
 
@@ -73,14 +84,16 @@ public class Map {
      * @throws MapExceptions
      * @throws GraphExceptions
      */
-    public void addConnectionsBetweenRooms(String source, String destination) throws MapExceptions {
+    public void addConnectionsBetweenRooms(String source, String destination) throws MapExceptions, GraphExceptions {
         Room sourceRoom = getRoomFromName(source);
         Room destRoom = getRoomFromName(destination);
 
         sourceRoom.addConnection(destRoom);
+        networkMap.addEdge(sourceRoom, destRoom, destRoom.getGhostCost());
 
         if (destRoom.getRoomName().equals(ENTRANCE) || destRoom.getRoomName().equals(EXIT)) {
             destRoom.addConnection(sourceRoom);
+            networkMap.addEdge(destRoom, sourceRoom, sourceRoom.getGhostCost());
         }
     }
 
@@ -123,9 +136,63 @@ public class Map {
         return addedRooms.iterator();
     }
 
+    /**
+     * Method to print the map form a certain Room
+     *
+     * @param room      room
+     * @param viewGhost boolean to view ghosts
+     * @throws MapExceptions
+     * @throws IOException
+     */
     @Generated
-    @Override
-    public String toString() {
-        return addedRooms.toString();
+    public void printMapFromRoom(String room, boolean viewGhost) throws MapExceptions, IOException {
+        Room startRoom = getRoomFromName(room);
+        Iterator<Room> path = networkMap.iteratorBFS(startRoom);
+
+        Room currentRoom = path.next();
+        System.out.println("------------------------------------------------");
+        System.out.println("Sala Atual : " + currentRoom.toString());
+        this.printDoorsFromRoom(currentRoom, viewGhost);
+        System.out.println("------------------------------------------------");
+
+        while (true) {
+            System.out.println("\nDeseja ver o resto do mapa ?(S/N)");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String input = reader.readLine();
+
+            if (input.equalsIgnoreCase("S")) {
+                System.out.println("\n------------------------------------------------");
+                while (path.hasNext()) {
+                    currentRoom = path.next();
+                    System.out.println("Sala : " + currentRoom.getRoomName());
+                    this.printDoorsFromRoom(currentRoom, viewGhost);
+                }
+                System.out.println("------------------------------------------------");
+                break;
+            } else if (input.equalsIgnoreCase("N")) {
+                break;
+            }
+            System.out.println("Input Inválido.");
+        }
+    }
+
+    /**
+     * Method to print the doors form a certain Room
+     *
+     * @param room      room
+     * @param viewGhost boolean to view ghosts
+     */
+    @Generated
+    private void printDoorsFromRoom(Room room, boolean viewGhost) {
+        System.out.println("Portas : ");
+        Iterator<Room> doors = room.getConnectionsIterator();
+        while (doors.hasNext()) {
+            Room currentDoor = doors.next();
+            System.out.print("- " + currentDoor.toString());
+            if (viewGhost && currentDoor.getGhostCost() != 0) {
+                System.out.print(" ->" + " Ghost Damage : " + currentDoor.getGhostCost());
+            }
+            System.out.print(";\n");
+        }
     }
 }
