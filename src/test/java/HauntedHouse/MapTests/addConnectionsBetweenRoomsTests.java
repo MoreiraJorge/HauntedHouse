@@ -1,0 +1,42 @@
+package HauntedHouse.MapTests;
+
+import HauntedHouse.MapDefinitions.Map;
+import HauntedHouse.MapDefinitions.MapExceptions;
+import HauntedHouse.Menu.Menu;
+import HauntedHouse.Menu.MenuExceptions;
+import Structures.Graph.GraphExceptions;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+/**
+ * Test class for addConnectionsBetweenRooms
+ * method
+ * @author Jorge, Miguel
+ */
+public class addConnectionsBetweenRoomsTests {
+    Map map;
+    Menu menu;
+
+    /**
+     * test cases setup
+     */
+    @BeforeEach
+    public void testSetup() throws GraphExceptions, MenuExceptions, MapExceptions {
+        menu = new Menu();
+        menu.loadMapFile("maps/mapa.json");
+        map = menu.createMapStructure();
+    }
+
+    /**
+     * Test if addConnectionsBetweenRooms throws
+     * an exception when a room is invalid
+     */
+    @Test
+    public void testIfAnExceptionIsThrownWhenARoomIsInvalid(){
+        Assertions.assertThrows(MapExceptions.class, () ->{
+            map.addConnectionsBetweenRooms("hall", "x");
+        });
+    }
+
+}
