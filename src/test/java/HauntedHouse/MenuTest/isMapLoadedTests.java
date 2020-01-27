@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests class for method isMapLoaded
  *
- * @author Miguel
+ * @author Jorge, Miguel
  */
 public class isMapLoadedTests {
 

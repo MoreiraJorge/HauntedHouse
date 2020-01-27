@@ -7,11 +7,13 @@ package HauntedHouse;
  * Main Class
  * @author Jorge Moreira, Miguel Costa
  */
+@Generated
 public class App {
     /**
      * main method
      * @param args
      */
+    @Generated
     public static void main(String[] args) {
         System.out.println("");
     }

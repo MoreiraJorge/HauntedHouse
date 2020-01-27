@@ -1,5 +1,6 @@
 package HauntedHouse.MapDefinitions;
 
+import HauntedHouse.Generated;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.UnorderedArray;
 import Structures.Lists.UnorderedListADT;
@@ -41,6 +42,7 @@ public class Map {
      *
      * @return title
      */
+    @Generated
     public String getTitle() {
         return title;
     }
@@ -50,6 +52,7 @@ public class Map {
      *
      * @return points
      */
+    @Generated
     public int getPoints() {
         return points;
     }
@@ -88,6 +91,7 @@ public class Map {
      * @return Room room
      * @throws MapExceptions
      */
+    @Generated
     private Room getRoomFromName(String roomName) throws MapExceptions {
         boolean found = false;
         Room room = null;
@@ -114,10 +118,12 @@ public class Map {
      *
      * @return List of Rooms In Map
      */
-    public UnorderedListADT<Room> getAddedRooms() {
-        return addedRooms;
+    @Generated
+    public Iterator<Room> getAddedRoomsIterator() {
+        return addedRooms.iterator();
     }
 
+    @Generated
     @Override
     public String toString() {
         return addedRooms.toString();

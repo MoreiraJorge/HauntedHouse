@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests class for method loadMap
- * @author Miguel
+ * @author Jorge, Miguel
  */
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class loadMapsToFileTest {

@@ -1,8 +1,11 @@
 package HauntedHouse.MapDefinitions;
 
+import HauntedHouse.Generated;
 import Structures.Lists.ListExceptions;
 import Structures.Lists.UnorderedArray;
 import Structures.Lists.UnorderedListADT;
+
+import java.util.Iterator;
 
 /**
  * Room definition class
@@ -20,6 +23,7 @@ public class Room {
      *
      * @param roomName
      */
+    @Generated
     public Room(String roomName, int ghostCost) {
         this.roomName = roomName;
         this.ghostCost = ghostCost;
@@ -31,6 +35,7 @@ public class Room {
      *
      * @return Room name
      */
+    @Generated
     public String getRoomName() {
         return roomName;
     }
@@ -40,6 +45,7 @@ public class Room {
      *
      * @return Cost of Ghost
      */
+    @Generated
     public int getGhostCost() {
         return ghostCost;
     }
@@ -87,8 +93,9 @@ public class Room {
      *
      * @return Connections
      */
-    public UnorderedListADT<Room> getConnections() {
-        return connections;
+    @Generated
+    public Iterator<Room> getConnectionsIterator() {
+        return connections.iterator();
     }
 
     /**
@@ -100,6 +107,7 @@ public class Room {
         return connections.size();
     }
 
+    @Generated
     @Override
     public String toString() {
         return roomName;
