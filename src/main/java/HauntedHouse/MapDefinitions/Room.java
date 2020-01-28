@@ -107,6 +107,28 @@ public class Room {
         return connections.size();
     }
 
+    /**
+     * Method to return String representation of all information about room
+     *
+     * @param viewGhost
+     * @return
+     */
+    @Generated
+    public String toString(boolean viewGhost) {
+        String text = "" + this.getRoomName();
+        text += "\nPortas : ";
+        Iterator<Room> doors = connections.iterator();
+        while (doors.hasNext()) {
+            Room currentDoor = doors.next();
+            text += "\n- " + currentDoor.toString();
+            if (viewGhost && currentDoor.getGhostCost() != 0) {
+                text += " ->" + " Ghost Damage : " + currentDoor.getGhostCost();
+            }
+            text += ";";
+        }
+        return text;
+    }
+
     @Generated
     @Override
     public String toString() {

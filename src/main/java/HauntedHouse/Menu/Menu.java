@@ -1,5 +1,9 @@
 package HauntedHouse.Menu;
 
+import HauntedHouse.Game.Difficulty;
+import HauntedHouse.Game.Game;
+import HauntedHouse.Game.Manual;
+import HauntedHouse.Game.Simulation;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
 import Structures.Graph.GraphExceptions;
@@ -162,7 +166,9 @@ public class Menu {
      * @throws MenuExceptions
      * @throws MapExceptions
      */
-    private void chooseGameMenu(Map map) {
+  
+    private void chooseGameMenu(Map map){
+     
 
         System.out.println("1 - Jogo Manual");
         System.out.println("2 - Simulação");
@@ -171,7 +177,7 @@ public class Menu {
 
         switch (opt) {
             case 1:
-                difficultyManual(map);
+               difficultyManual(map);
                 break;
             case 2:
                 difficultySimulation(map);
