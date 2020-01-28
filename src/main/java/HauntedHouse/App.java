@@ -3,18 +3,31 @@
  */
 package HauntedHouse;
 
+import HauntedHouse.MapDefinitions.MapExceptions;
+import HauntedHouse.Menu.Menu;
+import HauntedHouse.Menu.MenuExceptions;
+import Structures.Graph.GraphExceptions;
+
+import java.io.IOException;
+
 /**
  * Main Class
  * @author Jorge Moreira, Miguel Costa
  */
 @Generated
 public class App {
+
+    /**
+     * Menu instance
+     */
+    private static Menu menu = new Menu();
+
     /**
      * main method
      * @param args
      */
     @Generated
-    public static void main(String[] args) {
-        System.out.println("");
+    public static void main(String[] args) throws MapExceptions, MenuExceptions, GraphExceptions, IOException {
+        menu.mainMenu();
     }
 }
