@@ -107,6 +107,12 @@ public class Room {
         return connections.size();
     }
 
+    /**
+     * Method to return String representation of all information about room
+     *
+     * @param viewGhost
+     * @return
+     */
     @Generated
     public String toString(boolean viewGhost) {
         String text = "" + this.getRoomName();
@@ -125,7 +131,7 @@ public class Room {
 
     @Generated
     @Override
-    public String toString(){
+    public String toString() {
         return roomName;
     }
 }
