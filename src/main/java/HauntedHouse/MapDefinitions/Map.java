@@ -195,4 +195,12 @@ public class Map {
             System.out.print(";\n");
         }
     }
+
+    /**
+     *
+     * @return
+     */
+    public Room getEntrance() {
+        return entrance;
+    }
 }
