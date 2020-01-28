@@ -166,9 +166,9 @@ public class Menu {
      * @throws MenuExceptions
      * @throws MapExceptions
      */
+  
     private void chooseGameMenu(Map map){
-        String gameType = "";
-
+     
 
         System.out.println("1 - Jogo Manual");
         System.out.println("2 - Simulação");
@@ -196,8 +196,8 @@ public class Menu {
      * @throws GraphExceptions
      * @throws IOException
      */
-    private void difficultyManual(Map map){
-        Game manual;
+    private void difficultyManual(Map map) {
+        //Game manual;
 
         System.out.println("Escolha dificuldade: ");
         System.out.println("1 - Fácil");
@@ -207,18 +207,18 @@ public class Menu {
 
         switch (opt) {
             case 1:
-                manual = new Manual(map, Difficulty.EASY);
-                manual.startGame();
+                //manual = new Manual(map, Difficulty.EASY);
+                //manual.startGame();
                 System.out.println("manual easy");
                 break;
             case 2:
-                manual = new Manual(map, Difficulty.MEDIUM);
-                manual.startGame();
+                //manual = new Manual(map, Difficulty.MEDIUM);
+                //manual.startGame();
                 System.out.println("manual medium");
                 break;
             case 3:
-                manual = new Manual(map, Difficulty.HARD);
-                manual.startGame();
+                //manual = new Manual(map, Difficulty.HARD);
+                //manual.startGame();
                 System.out.println("manual hard");
                 break;
             default:
@@ -235,8 +235,8 @@ public class Menu {
      * @throws GraphExceptions
      * @throws IOException
      */
-    private void difficultySimulation(Map map){
-        Game simulation;
+    private void difficultySimulation(Map map) {
+        //Game simulation;
 
         System.out.println("Escolha dificuldade: ");
         System.out.println("1 - Fácil");
@@ -246,18 +246,18 @@ public class Menu {
 
         switch (opt) {
             case 1:
-                simulation = new Simulation(map, Difficulty.EASY);
-                simulation.startGame();
+                //simulation = new Simulation(map, Difficulty.EASY);
+                //simulation.startGame();
                 System.out.println("simulação easy");
                 break;
             case 2:
-                simulation = new Simulation(map, Difficulty.MEDIUM);
-                simulation.startGame();
+                //simulation = new Simulation(map, Difficulty.MEDIUM);
+                //simulation.startGame();
                 System.out.println("simulação medium");
                 break;
             case 3:
-                simulation = new Simulation(map, Difficulty.HARD);
-                simulation.startGame();
+                //simulation = new Simulation(map, Difficulty.HARD);
+                //simulation.startGame();
                 System.out.println("simulação hard");
                 break;
             default:
