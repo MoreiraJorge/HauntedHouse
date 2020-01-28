@@ -1,7 +1,9 @@
 package HauntedHouse.MapDefinitions;
 
 import HauntedHouse.Generated;
+import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
+import Structures.Lists.ListExceptions;
 import Structures.Lists.UnorderedArray;
 import Structures.Lists.UnorderedListADT;
 import Structures.Network.NetworkADT;
@@ -151,23 +153,23 @@ public class Map {
 
         Room currentRoom = path.next();
         System.out.println("------------------------------------------------");
-        System.out.println("Sala Atual : " + currentRoom.toString());
-        this.printDoorsFromRoom(currentRoom, viewGhost);
+        System.out.println("Sala Atual : " + currentRoom.toString(viewGhost));
         System.out.println("------------------------------------------------");
 
         while (true) {
-            System.out.println("\nDeseja ver o resto do mapa ?(S/N)");
+            System.out.println("------------------------------------------------\n");
+            System.out.println("Deseja ver o resto do mapa ?(S/N)");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String input = reader.readLine();
+            System.out.println("------------------------------------------------");
 
             if (input.equalsIgnoreCase("S")) {
-                System.out.println("\n------------------------------------------------");
                 while (path.hasNext()) {
+                    System.out.println("\n------------------------------------------------");
                     currentRoom = path.next();
-                    System.out.println("Sala : " + currentRoom.getRoomName());
-                    this.printDoorsFromRoom(currentRoom, viewGhost);
+                    System.out.println("Sala : " + currentRoom.toString(viewGhost));
+                    System.out.println("------------------------------------------------");
                 }
-                System.out.println("------------------------------------------------");
                 break;
             } else if (input.equalsIgnoreCase("N")) {
                 break;
@@ -176,24 +178,8 @@ public class Map {
         }
     }
 
-    /**
-     * Method to print the doors form a certain Room
-     *
-     * @param room      room
-     * @param viewGhost boolean to view ghosts
-     */
-    @Generated
-    private void printDoorsFromRoom(Room room, boolean viewGhost) {
-        System.out.println("Portas : ");
-        Iterator<Room> doors = room.getConnectionsIterator();
-        while (doors.hasNext()) {
-            Room currentDoor = doors.next();
-            System.out.print("- " + currentDoor.toString());
-            if (viewGhost && currentDoor.getGhostCost() != 0) {
-                System.out.print(" ->" + " Ghost Damage : " + currentDoor.getGhostCost());
-            }
-            System.out.print(";\n");
-        }
+    public Iterator<Room> simulationMode() throws BinaryTreeExceptions, GraphExceptions, ListExceptions {
+        return networkMap.iteratorShortestPath(entrance, exit);
     }
 
     /**
