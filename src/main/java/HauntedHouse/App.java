@@ -6,7 +6,9 @@ package HauntedHouse;
 import HauntedHouse.MapDefinitions.MapExceptions;
 import HauntedHouse.Menu.Menu;
 import HauntedHouse.Menu.MenuExceptions;
+import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
+import Structures.Lists.ListExceptions;
 
 import java.io.IOException;
 
@@ -27,7 +29,8 @@ public class App {
      * @param args
      */
     @Generated
-    public static void main(String[] args) throws MapExceptions, MenuExceptions, GraphExceptions, IOException {
+    public static void main(String[] args) throws MapExceptions, MenuExceptions,
+            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions {
         menu.mainMenu();
     }
 }

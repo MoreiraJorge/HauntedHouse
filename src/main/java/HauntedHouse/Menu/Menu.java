@@ -2,11 +2,12 @@ package HauntedHouse.Menu;
 
 import HauntedHouse.Game.Difficulty;
 import HauntedHouse.Game.Game;
-import HauntedHouse.Game.Manual;
 import HauntedHouse.Game.Simulation;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
+import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
+import Structures.Lists.ListExceptions;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -121,7 +122,8 @@ public class Menu {
      * @throws GraphExceptions
      * @throws IOException
      */
-    public void mainMenu() throws MapExceptions, MenuExceptions, GraphExceptions, IOException {
+    public void mainMenu() throws MapExceptions, MenuExceptions,
+            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions {
         boolean exit = false;
 
         while (!exit) {
@@ -167,7 +169,8 @@ public class Menu {
      * @throws MapExceptions
      */
   
-    private void chooseGameMenu(Map map){
+    private void chooseGameMenu(Map map) throws MapExceptions, ListExceptions,
+            BinaryTreeExceptions, GraphExceptions, IOException {
      
 
         System.out.println("1 - Jogo Manual");
@@ -196,7 +199,8 @@ public class Menu {
      * @throws GraphExceptions
      * @throws IOException
      */
-    private void difficultyManual(Map map) {
+    private void difficultyManual(Map map) throws MapExceptions, IOException, BinaryTreeExceptions,
+            GraphExceptions, ListExceptions {
         //Game manual;
 
         System.out.println("Escolha dificuldade: ");
@@ -235,8 +239,9 @@ public class Menu {
      * @throws GraphExceptions
      * @throws IOException
      */
-    private void difficultySimulation(Map map) {
-        //Game simulation;
+    private void difficultySimulation(Map map) throws IOException, ListExceptions,
+            MapExceptions, GraphExceptions, BinaryTreeExceptions {
+        Game simulation;
 
         System.out.println("Escolha dificuldade: ");
         System.out.println("1 - Fácil");
@@ -246,18 +251,18 @@ public class Menu {
 
         switch (opt) {
             case 1:
-                //simulation = new Simulation(map, Difficulty.EASY);
-                //simulation.startGame();
+                simulation = new Simulation(map, Difficulty.EASY);
+                simulation.startGame();
                 System.out.println("simulação easy");
                 break;
             case 2:
-                //simulation = new Simulation(map, Difficulty.MEDIUM);
-                //simulation.startGame();
+                simulation = new Simulation(map, Difficulty.MEDIUM);
+                simulation.startGame();
                 System.out.println("simulação medium");
                 break;
             case 3:
-                //simulation = new Simulation(map, Difficulty.HARD);
-                //simulation.startGame();
+                simulation = new Simulation(map, Difficulty.HARD);
+                simulation.startGame();
                 System.out.println("simulação hard");
                 break;
             default:
