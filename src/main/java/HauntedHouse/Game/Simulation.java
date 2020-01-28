@@ -9,6 +9,7 @@ public class Simulation implements Game {
 
     private Map map;
     private int diff;
+    private int points;
 
     /**
      *
@@ -18,6 +19,7 @@ public class Simulation implements Game {
     public Simulation(Map mp, Difficulty tmpDiff ) {
         map = mp;
         diff = Difficulty.getDifficultyFactor(tmpDiff);
+        this.points = map.getPoints();
     }
 
 
