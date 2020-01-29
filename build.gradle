@@ -71,7 +71,7 @@ jacocoTestReport {
 jar {
     manifest {
         attributes(
-                "Main-Class": "App.Demo",
+                "Main-Class": "HauntedHouse.App",
                 "Built-by" : "Jorge Moreira, Miguel Costa",
                 "Scope" : "Trabalho Estrutura de Dados"
 
