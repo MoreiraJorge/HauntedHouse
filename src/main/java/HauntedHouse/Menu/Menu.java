@@ -9,6 +9,7 @@ import HauntedHouse.MapDefinitions.MapExceptions;
 import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.ListExceptions;
+import Structures.Stack.EmptyCollectionException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -124,7 +125,7 @@ public class Menu {
      * @throws IOException
      */
     public void mainMenu() throws MapExceptions, MenuExceptions,
-            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions {
+            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions, EmptyCollectionException {
         boolean exit = false;
 
         while (!exit) {
@@ -170,7 +171,7 @@ public class Menu {
      * @throws MapExceptions
      */
     private void chooseGameMenu(Map map) throws MapExceptions, ListExceptions,
-            BinaryTreeExceptions, GraphExceptions, IOException {
+            BinaryTreeExceptions, GraphExceptions, IOException, EmptyCollectionException {
 
         boolean exit = false;
 
@@ -208,7 +209,7 @@ public class Menu {
      * @throws IOException
      */
     private void difficultyManual(Map map) throws MapExceptions, IOException, BinaryTreeExceptions,
-            GraphExceptions, ListExceptions {
+            GraphExceptions, ListExceptions, EmptyCollectionException {
         //Game manual;
 
         boolean exit = false;
@@ -225,18 +226,15 @@ public class Menu {
             switch (opt) {
                 case 1:
                     manual = new Manual(map, Difficulty.EASY);
-                    //manual.startGame();
-                    System.out.println("manual easy");
+                    manual.startGame();
                     break;
                 case 2:
                     manual = new Manual(map, Difficulty.MEDIUM);
-                    //manual.startGame();
-                    System.out.println("manual medium");
+                    manual.startGame();
                     break;
                 case 3:
                     manual = new Manual(map, Difficulty.HARD);
-                    //manual.startGame();
-                    System.out.println("manual hard");
+                    manual.startGame();
                     break;
                 case 4:
                     exit = true;
@@ -256,7 +254,7 @@ public class Menu {
      * @throws IOException
      */
     private void difficultySimulation(Map map) throws IOException, ListExceptions,
-            MapExceptions, GraphExceptions, BinaryTreeExceptions {
+            MapExceptions, GraphExceptions, BinaryTreeExceptions, EmptyCollectionException {
         Game simulation;
 
         boolean exit = false;
