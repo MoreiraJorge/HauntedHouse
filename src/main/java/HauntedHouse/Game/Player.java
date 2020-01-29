@@ -38,4 +38,11 @@ public class Player {
         flashBack.push(room);
     }
 
+    public int getPlayerPoints() {
+        return playerPoints;
+    }
+
+    public void setPlayerPoints(int playerPoints) {
+        this.playerPoints = playerPoints;
+    }
 }
