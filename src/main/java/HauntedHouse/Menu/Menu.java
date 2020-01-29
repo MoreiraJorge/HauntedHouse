@@ -2,6 +2,7 @@ package HauntedHouse.Menu;
 
 import HauntedHouse.Game.Difficulty;
 import HauntedHouse.Game.Game;
+import HauntedHouse.Game.Manual;
 import HauntedHouse.Game.Simulation;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
@@ -213,7 +214,7 @@ public class Menu {
         boolean exit = false;
 
         while (!exit) {
-
+            Manual manual;
             System.out.println("Escolha dificuldade: ");
             System.out.println("1 - Fácil");
             System.out.println("2 - Médio");
@@ -223,17 +224,17 @@ public class Menu {
 
             switch (opt) {
                 case 1:
-                    //manual = new Manual(map, Difficulty.EASY);
+                    manual = new Manual(map, Difficulty.EASY);
                     //manual.startGame();
                     System.out.println("manual easy");
                     break;
                 case 2:
-                    //manual = new Manual(map, Difficulty.MEDIUM);
+                    manual = new Manual(map, Difficulty.MEDIUM);
                     //manual.startGame();
                     System.out.println("manual medium");
                     break;
                 case 3:
-                    //manual = new Manual(map, Difficulty.HARD);
+                    manual = new Manual(map, Difficulty.HARD);
                     //manual.startGame();
                     System.out.println("manual hard");
                     break;
