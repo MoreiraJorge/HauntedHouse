@@ -168,27 +168,34 @@ public class Menu {
      * @throws MenuExceptions
      * @throws MapExceptions
      */
-  
     private void chooseGameMenu(Map map) throws MapExceptions, ListExceptions,
             BinaryTreeExceptions, GraphExceptions, IOException {
-     
 
-        System.out.println("1 - Jogo Manual");
-        System.out.println("2 - Simulação");
-        System.out.println("3 - Voltar");
-        opt = keyboard.nextInt();
+        boolean exit = false;
 
-        switch (opt) {
-            case 1:
-               difficultyManual(map);
-                break;
-            case 2:
-                difficultySimulation(map);
-                break;
-            case 3:
-                break;
+        while (!exit) {
+
+            System.out.println("1 - Jogo Manual");
+            System.out.println("2 - Simulação");
+            System.out.println("3 - Voltar");
+            opt = keyboard.nextInt();
+
+            switch (opt) {
+                case 1:
+                    difficultyManual(map);
+                    break;
+                case 2:
+                    difficultySimulation(map);
+                    break;
+                case 3:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
+            }
+
         }
-
     }
 
 
@@ -203,33 +210,41 @@ public class Menu {
             GraphExceptions, ListExceptions {
         //Game manual;
 
-        System.out.println("Escolha dificuldade: ");
-        System.out.println("1 - Fácil");
-        System.out.println("2 - Médio");
-        System.out.println("3 - Difícil");
-        opt = keyboard.nextInt();
+        boolean exit = false;
 
-        switch (opt) {
-            case 1:
-                //manual = new Manual(map, Difficulty.EASY);
-                //manual.startGame();
-                System.out.println("manual easy");
-                break;
-            case 2:
-                //manual = new Manual(map, Difficulty.MEDIUM);
-                //manual.startGame();
-                System.out.println("manual medium");
-                break;
-            case 3:
-                //manual = new Manual(map, Difficulty.HARD);
-                //manual.startGame();
-                System.out.println("manual hard");
-                break;
-            default:
-                chooseGameMenu(map);
-                break;
+        while (!exit) {
+
+            System.out.println("Escolha dificuldade: ");
+            System.out.println("1 - Fácil");
+            System.out.println("2 - Médio");
+            System.out.println("3 - Difícil");
+            System.out.println("4 - Voltar");
+            opt = keyboard.nextInt();
+
+            switch (opt) {
+                case 1:
+                    //manual = new Manual(map, Difficulty.EASY);
+                    //manual.startGame();
+                    System.out.println("manual easy");
+                    break;
+                case 2:
+                    //manual = new Manual(map, Difficulty.MEDIUM);
+                    //manual.startGame();
+                    System.out.println("manual medium");
+                    break;
+                case 3:
+                    //manual = new Manual(map, Difficulty.HARD);
+                    //manual.startGame();
+                    System.out.println("manual hard");
+                    break;
+                case 4:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
+            }
         }
-
     }
 
     /**
@@ -243,31 +258,37 @@ public class Menu {
             MapExceptions, GraphExceptions, BinaryTreeExceptions {
         Game simulation;
 
-        System.out.println("Escolha dificuldade: ");
-        System.out.println("1 - Fácil");
-        System.out.println("2 - Médio");
-        System.out.println("3 - Difícil");
-        opt = keyboard.nextInt();
+        boolean exit = false;
 
-        switch (opt) {
-            case 1:
-                simulation = new Simulation(map, Difficulty.EASY);
-                simulation.startGame();
-                System.out.println("simulação easy");
-                break;
-            case 2:
-                simulation = new Simulation(map, Difficulty.MEDIUM);
-                simulation.startGame();
-                System.out.println("simulação medium");
-                break;
-            case 3:
-                simulation = new Simulation(map, Difficulty.HARD);
-                simulation.startGame();
-                System.out.println("simulação hard");
-                break;
-            default:
-                chooseGameMenu(map);
-                break;
+        while (!exit) {
+
+            System.out.println("Escolha dificuldade: ");
+            System.out.println("1 - Fácil");
+            System.out.println("2 - Médio");
+            System.out.println("3 - Difícil");
+            System.out.println("4 - Voltar");
+            opt = keyboard.nextInt();
+
+            switch (opt) {
+                case 1:
+                    simulation = new Simulation(map, Difficulty.EASY);
+                    simulation.startGame();
+                    break;
+                case 2:
+                    simulation = new Simulation(map, Difficulty.MEDIUM);
+                    simulation.startGame();
+                    break;
+                case 3:
+                    simulation = new Simulation(map, Difficulty.HARD);
+                    simulation.startGame();
+                    break;
+                case 4:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
+            }
         }
     }
 
