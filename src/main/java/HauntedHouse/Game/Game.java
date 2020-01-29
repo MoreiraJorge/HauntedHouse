@@ -4,6 +4,7 @@ import HauntedHouse.MapDefinitions.MapExceptions;
 import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.ListExceptions;
+import Structures.Stack.EmptyCollectionException;
 
 import java.io.IOException;
 
@@ -18,7 +19,7 @@ public interface Game {
     /**
      * Method used to start the game
      */
-    public void startGame() throws BinaryTreeExceptions, GraphExceptions, ListExceptions, IOException, MapExceptions;
+    public void startGame() throws BinaryTreeExceptions, GraphExceptions, ListExceptions, IOException, MapExceptions, EmptyCollectionException;
 
     /**
      * method used to show the current player
