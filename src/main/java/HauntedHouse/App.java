@@ -9,6 +9,7 @@ import HauntedHouse.Menu.MenuExceptions;
 import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.ListExceptions;
+import Structures.Stack.EmptyCollectionException;
 
 import java.io.IOException;
 
@@ -32,7 +33,7 @@ public class App {
      */
     @Generated
     public static void main(String[] args) throws MapExceptions, MenuExceptions,
-            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions {
+            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions, EmptyCollectionException {
         menu.mainMenu();
     }
 }
