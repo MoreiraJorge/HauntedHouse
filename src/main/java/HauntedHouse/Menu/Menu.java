@@ -138,7 +138,7 @@ public class Menu {
                     chooseGameMenu(askMapPath());
                     break;
                 case 2:
-                    System.out.println("classificações");
+                    chooseDifficultyRatings(askMapRatings());
                     break;
                 case 3:
                     exit = true;
@@ -281,6 +281,49 @@ public class Menu {
                 case 3:
                     simulation = new Simulation(map, Difficulty.HARD);
                     simulation.startGame();
+                    break;
+                case 4:
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("Opção inválida");
+                    break;
+            }
+        }
+    }
+
+    /**
+     *
+     */
+    private String askMapRatings() throws IOException {
+        System.out.println("Introduza o nome do mapa: ");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String input = reader.readLine();
+        return input;
+    }
+
+    private void chooseDifficultyRatings(String name) throws IOException {
+        String path = "ratings/" + name;
+        boolean exit = false;
+        Ratings rating = new Ratings();
+
+        while(!exit){
+            System.out.println("Escolha a tabela de resultados da dificuldade que deseja: ");
+            System.out.println("1 - Fácil");
+            System.out.println("2 - Médio");
+            System.out.println("3 - Difícil");
+            System.out.println("4 - Voltar");
+            opt = keyboard.nextInt();
+
+            switch (opt){
+                case 1:
+                    rating.PrintRatingFile(path,1);
+                    break;
+                case 2:
+                    rating.PrintRatingFile(path,2);
+                    break;
+                case 3:
+                    rating.PrintRatingFile(path,3);
                     break;
                 case 4:
                     exit = true;

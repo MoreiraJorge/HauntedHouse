@@ -1,0 +1,4 @@
+testRats - Easy
+Miguel- Points :50
+Jorge- Points :12
+Miguel- Points :6
