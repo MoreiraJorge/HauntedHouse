@@ -183,8 +183,7 @@ public class Map {
     }
 
     /**
-     *
-     * @return
+     * @return the entrance of the map
      */
     public Room getEntrance() {
         return entrance;

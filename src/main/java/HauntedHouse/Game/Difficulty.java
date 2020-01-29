@@ -1,14 +1,18 @@
 package HauntedHouse.Game;
 
 /**
+ * Enum class with Difficulty levels
  *
+ * @author Jorge, Miguel
  */
 public enum Difficulty {
     EASY, MEDIUM, HARD;
 
     /**
-     * @param diff
-     * @return
+     * method to get the difficulty factor,
+     * given a
+     * @param diff difficulty
+     * @return the difficulty factor
      */
     public static int getDifficultyFactor(Difficulty diff) {
         int factor = 0;

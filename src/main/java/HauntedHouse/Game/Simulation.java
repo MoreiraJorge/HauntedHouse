@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 /**
  * Class of Simulation Mode of Game
+ *
+ * @author Jorge, Miguel
  */
 public class Simulation implements Game {
 
@@ -21,7 +23,7 @@ public class Simulation implements Game {
     private int points;
 
     /**
-     * Default Contructor
+     * Default Simulation Contructor
      *
      * @param mp
      * @param tmpDiff

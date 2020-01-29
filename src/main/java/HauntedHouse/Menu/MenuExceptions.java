@@ -2,8 +2,16 @@ package HauntedHouse.Menu;
 
 import HauntedHouse.Generated;
 
+/**
+ * Class with exceptions to be used on Menu
+ *
+ * @author Jorge , Miguel
+ */
 public class MenuExceptions extends Exception {
 
+    /**
+     * message for non loaded map
+     */
     public static final String MAP_NOT_LOADED = "O mapa ainda não foi carregado.";
 
     @Generated

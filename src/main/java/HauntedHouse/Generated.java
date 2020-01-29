@@ -1,7 +1,7 @@
 package HauntedHouse;
 
 /**
- * Generated annotation for whitebox test
+ * Generated annotation for whitebox tests
  */
 public @interface Generated {
 }
