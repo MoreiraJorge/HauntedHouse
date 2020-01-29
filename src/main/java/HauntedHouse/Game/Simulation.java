@@ -58,7 +58,7 @@ public class Simulation implements Game {
             steps++;
         }
 
-        System.out.println("\nFinal do jogo. Pontuação Final : " + this.points);
+        System.out.println("\nFinal do jogo. Pontuação Final : " + this.points + "\n");
     }
 
     @Override
