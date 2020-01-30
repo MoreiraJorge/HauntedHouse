@@ -306,7 +306,7 @@ public class Menu {
     }
 
     /**
-     * Asks the map wich will be used to check ratings
+     * Asks the map name which will be used to check ratings
      */
     private String askMapRatings() throws IOException {
         System.out.println("Introduza o nome do mapa: ");
