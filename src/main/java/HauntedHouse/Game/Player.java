@@ -20,7 +20,7 @@ public class Player {
     /**
      * The player points
      */
-    private int playerPoints = 0;
+    private int playerPoints;
 
     /**
      * Player flashbacks
@@ -30,13 +30,22 @@ public class Player {
     /**
      * Player constructor
      *
-     * @param tmpName
+     * @param name
      * @param mapPoints
      */
-    public Player(String tmpName, int mapPoints, Room room) {
-        name = tmpName;
-        playerPoints = mapPoints;
-        flashBack.push(room);
+    public Player(String name, int mapPoints, Room room) {
+        this.name = name;
+        this.playerPoints = mapPoints;
+        this.flashBack.push(room);
+    }
+
+    /**
+     * Gets the player name
+     *
+     * @return
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -76,11 +85,5 @@ public class Player {
         return flashBack.peek();
     }
 
-    /**
-     * Gets the player name
-     * @return
-     */
-    public String getName() {
-        return name;
-    }
+
 }
