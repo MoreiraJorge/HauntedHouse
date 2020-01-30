@@ -322,7 +322,6 @@ public class Menu {
     private void chooseDifficultyRatings(String name) {
         String path = "ratings/" + name;
         boolean exit = false;
-        Ratings rating = new Ratings();
 
         while (!exit) {
 
@@ -335,13 +334,13 @@ public class Menu {
 
             switch (opt) {
                 case "1":
-                    rating.PrintRatingFile(path, 1);
+                    Ratings.PrintRatingFile(path, 1);
                     break;
                 case "2":
-                    rating.PrintRatingFile(path, 2);
+                    Ratings.PrintRatingFile(path, 2);
                     break;
                 case "3":
-                    rating.PrintRatingFile(path, 3);
+                    Ratings.PrintRatingFile(path, 3);
                     break;
                 case "4":
                     exit = true;

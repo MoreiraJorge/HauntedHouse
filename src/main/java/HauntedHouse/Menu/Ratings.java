@@ -1,5 +1,6 @@
 package HauntedHouse.Menu;
 
+import Structures.Lists.ListExceptions;
 import Structures.Lists.OrderedList;
 import Structures.Lists.OrderedListADT;
 
@@ -16,9 +17,10 @@ public class Ratings {
     /**
      * result list of a game
      */
-    private OrderedListADT<Result> resultList = new OrderedList();
+    private static OrderedListADT<Result> resultList = new OrderedList();
 
     /**
+     *
      * Writes Ratings to files,
      * if the file doesnt exist, create a new one
      * @param mapTitle map title
@@ -26,7 +28,7 @@ public class Ratings {
      * @throws IOException
      *
      */
-    public void writeToRatingsFile(String mapTitle, int difficulty){
+    public static void writeToRatingsFile(String mapTitle, int difficulty){
         try {
             String filename = "";
 
@@ -85,7 +87,7 @@ public class Ratings {
      * prints the ratings of a map to the screen
      *
      */
-    public void PrintRatingFile(String mapTitle, int difficulty){
+    public static void PrintRatingFile(String mapTitle, int difficulty){
         try {
 
             String filename = mapTitle;
@@ -111,13 +113,12 @@ public class Ratings {
         }
     }
 
-
     /**
-     * gets the results list
-     * @return
+     * add a player result to the result list
+     * @param res
+     * @throws ListExceptions
      */
-    public OrderedListADT<Result> getResultList() {
-        return resultList;
+    public static void addResult(Result res) throws ListExceptions {
+        resultList.add(res);
     }
-
 }
