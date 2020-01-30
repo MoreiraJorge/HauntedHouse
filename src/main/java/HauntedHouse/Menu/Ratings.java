@@ -63,18 +63,16 @@ public class Ratings {
             String path = "ratings/" + filename;
             File file = new File(path);
 
-            fw = new FileWriter(file,true);
+            fw = new FileWriter(file, true);
             bw = new BufferedWriter(fw);
 
-            // If file doesn't exists, then create it
-            if (file.exists() == false) {
-                file.createNewFile();
-                // Write in file
-                bw.write(mapTitle);
-                bw.write(" - ");
-                bw.write(difficultyID);
-                bw.newLine();
-            }
+            file.createNewFile();
+            // Write in file
+            bw.append(mapTitle);
+            bw.append(" - ");
+            bw.append(difficultyID);
+            bw.newLine();
+
 
             Iterator<Result> resultListItr = resultList.iterator();
 
@@ -83,7 +81,7 @@ public class Ratings {
 
                 Result tmpRes = resultListItr.next();
 
-                bw.append(tmpRes.playerName + " -   Points :"
+                bw.append(tmpRes.playerName + " - Points :"
                         + tmpRes.playerPoints);
                 bw.newLine();
             }
