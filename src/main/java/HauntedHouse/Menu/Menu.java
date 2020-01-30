@@ -4,6 +4,7 @@ import HauntedHouse.Game.Difficulty;
 import HauntedHouse.Game.Game;
 import HauntedHouse.Game.Manual;
 import HauntedHouse.Game.Simulation;
+import HauntedHouse.Generated;
 import HauntedHouse.MapDefinitions.Map;
 
 import java.io.*;
@@ -14,6 +15,7 @@ import java.util.Scanner;
  *
  * @author Jorge, Miguel
  */
+@Generated
 public class Menu {
 
     Scanner keyboard = new Scanner(System.in);
