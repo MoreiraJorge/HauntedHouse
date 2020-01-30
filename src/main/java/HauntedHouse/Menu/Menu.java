@@ -2,6 +2,7 @@ package HauntedHouse.Menu;
 
 import HauntedHouse.Game.Difficulty;
 import HauntedHouse.Game.Game;
+import HauntedHouse.Game.Manual;
 import HauntedHouse.Game.Simulation;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
@@ -127,29 +128,29 @@ public class Menu {
 
         while (!exit) {
 
-                System.out.println("1 - Jogar");
-                System.out.println("2 - Consultar Classificações");
-                System.out.println("3 - Sair");
+            System.out.println("1 - Jogar");
+            System.out.println("2 - Consultar Classificações");
+            System.out.println("3 - Sair");
 
-                opt = keyboard.nextLine();
+            opt = keyboard.nextLine();
 
-                switch (opt) {
-                    case "1":
-                        map = askMapPath();
-                        if (map != null) {
-                            chooseGameMenu(map);
-                        }
-                        break;
-                    case "2":
-                        chooseDifficultyRatings(askMapRatings());
-                        break;
-                    case "3":
-                        exit = true;
-                        break;
-                    default:
-                        System.out.println("opção inválida");
-                        break;
-                }
+            switch (opt) {
+                case "1":
+                    map = askMapPath();
+                    if (map != null) {
+                        chooseGameMenu(map);
+                    }
+                    break;
+                case "2":
+                    chooseDifficultyRatings(askMapRatings());
+                    break;
+                case "3":
+                    exit = true;
+                    break;
+                default:
+                    System.out.println("opção inválida");
+                    break;
+            }
         }
     }
 
@@ -213,50 +214,57 @@ public class Menu {
 
 
     /**
+     * Asks the user the difficulty of
+     * the game in manual and starts
+     *
      * @param map
      */
     private void difficultyManual(Map map) {
-        //Game manual;
+        Game manual;
         boolean exit = false;
 
-        while (!exit) {
+        try {
+            while (!exit) {
 
-            System.out.println("Escolha dificuldade: ");
-            System.out.println("1 - Fácil");
-            System.out.println("2 - Médio");
-            System.out.println("3 - Difícil");
-            System.out.println("4 - Voltar");
-            opt = keyboard.nextLine();
+                System.out.println("Escolha dificuldade: ");
+                System.out.println("1 - Fácil");
+                System.out.println("2 - Médio");
+                System.out.println("3 - Difícil");
+                System.out.println("4 - Voltar");
+                opt = keyboard.nextLine();
 
-            switch (opt) {
-                case "1":
-                    //manual = new Manual(map, Difficulty.EASY);
-                    //manual.startGame();
-                    System.out.println("manual easy");
-                    break;
-                case "2":
-                    //manual = new Manual(map, Difficulty.MEDIUM);
-                    //manual.startGame();
-                    System.out.println("manual medium");
-                    break;
-                case "3":
-                    //manual = new Manual(map, Difficulty.HARD);
-                    //manual.startGame();
-                    System.out.println("manual hard");
-                    break;
-                case "4":
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    break;
+                switch (opt) {
+                    case "1":
+                        manual = new Manual(map, Difficulty.EASY);
+                        manual.startGame();
+                        System.out.println("manual easy");
+                        break;
+                    case "2":
+                        manual = new Manual(map, Difficulty.MEDIUM);
+                        manual.startGame();
+                        System.out.println("manual medium");
+                        break;
+                    case "3":
+                        manual = new Manual(map, Difficulty.HARD);
+                        manual.startGame();
+                        System.out.println("manual hard");
+                        break;
+                    case "4":
+                        exit = true;
+                        break;
+                    default:
+                        System.out.println("Opção inválida");
+                        break;
+                }
             }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
     /**
      * Asks the user the difficulty of
-     * the game in simulation
+     * the game in simulation and starts
      *
      * @param map game map
      */
