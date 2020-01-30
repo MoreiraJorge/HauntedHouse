@@ -10,6 +10,11 @@ import org.json.simple.parser.JSONParser;
 import java.io.FileReader;
 import java.util.Iterator;
 
+/**
+ * Class with MapFile Operations
+ *
+ * @author Jorge, Miguel
+ */
 public class MapFile {
 
     private String name;
@@ -17,6 +22,9 @@ public class MapFile {
     private JSONArray map;
     private boolean mapLoaded;
 
+    /**
+     * Default Constructor
+     */
     public MapFile() {
         mapLoaded = false;
     }
