@@ -2,7 +2,7 @@ package HauntedHouse.MapTests;
 
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
-import HauntedHouse.Menu.Menu;
+import HauntedHouse.Menu.MapFile;
 import HauntedHouse.Menu.MenuExceptions;
 import Structures.Graph.GraphExceptions;
 import org.junit.jupiter.api.Assertions;
@@ -15,17 +15,17 @@ import org.junit.jupiter.api.Test;
  * @author Jorge, Miguel
  */
 public class addConnectionsBetweenRoomsTests {
+    MapFile mapFile;
     Map map;
-    Menu menu;
 
     /**
      * test cases setup
      */
     @BeforeEach
     public void testSetup() throws GraphExceptions, MenuExceptions, MapExceptions {
-        menu = new Menu();
-        menu.loadMapFile("maps/mapa.json");
-        map = menu.createMapStructure();
+        mapFile = new MapFile();
+        mapFile.loadMapFile("maps/mapa.json");
+        map = mapFile.createMapStructure();
     }
 
     /**
