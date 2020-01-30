@@ -1,9 +1,9 @@
-package HauntedHouse.MenuTest;
+package HauntedHouse.MapFileTests;
 
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
-import HauntedHouse.Menu.Menu;
-import HauntedHouse.Menu.MenuExceptions;
+import HauntedHouse.Menu.MapFile;
+import HauntedHouse.Menu.MapFileExceptions;
 import Structures.Graph.GraphExceptions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
  * @author Jorge , Miguel
  */
 public class createMapStructureTests {
-    Menu menu;
+    MapFile mapFile;
     Map map;
 
     /**
@@ -22,7 +22,7 @@ public class createMapStructureTests {
      */
     @BeforeEach
     public void testSetup() {
-        menu = new Menu();
+        mapFile = new MapFile();
     }
 
     /**
@@ -31,8 +31,8 @@ public class createMapStructureTests {
      */
     @Test
     public void TestCreateAnInvalidMapStructure(){
-        Assertions.assertThrows(MenuExceptions.class, () ->{
-            menu.createMapStructure();
+        Assertions.assertThrows(MapFileExceptions.class, () ->{
+            mapFile.createMapStructure();
         });
     }
 
@@ -40,13 +40,13 @@ public class createMapStructureTests {
      * test if the map structure is created when a valid map
      * is loaded
      * @throws GraphExceptions
-     * @throws MenuExceptions
+     * @throws MapFileExceptions
      * @throws MapExceptions
      */
     @Test
-    public void TestCreateAValidMapStructure() throws GraphExceptions, MenuExceptions, MapExceptions {
-        menu.loadMapFile("maps/mapa.json");
-        map = menu.createMapStructure();
+    public void TestCreateAValidMapStructure() throws GraphExceptions, MapFileExceptions, MapExceptions {
+        mapFile.loadMapFile("maps/mapa.json");
+        map = mapFile.createMapStructure();
         Assertions.assertNotNull(map);
     }
 

@@ -1,5 +1,6 @@
 package HauntedHouse.Game;
 
+import HauntedHouse.Generated;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
 import HauntedHouse.MapDefinitions.Room;
@@ -16,6 +17,7 @@ import java.util.Scanner;
  *
  * @author Jorge, Miguel
  */
+@Generated
 public class Simulation implements Game {
 
     private Map map;
@@ -36,7 +38,7 @@ public class Simulation implements Game {
 
     @Override
     public void startGame() throws BinaryTreeExceptions, GraphExceptions, ListExceptions, IOException, MapExceptions {
-        Iterator<Room> path = map.simulationMode();
+        Iterator<Room> path = map.bestPathForMapIterator();
         int steps = 1;
 
         Room currentRoom = path.next();
@@ -61,8 +63,11 @@ public class Simulation implements Game {
         System.out.println("\nFinal do jogo. Pontuação Final : " + this.points + "\n");
     }
 
-    @Override
-    public void showPlayerPoints() {
+    /**
+     * Method used to show the current player
+     * points
+     */
+    private void showPlayerPoints() {
         System.out.println("Pontuação Atual: " + points);
     }
 }

@@ -4,18 +4,10 @@ import HauntedHouse.Game.Difficulty;
 import HauntedHouse.Game.Game;
 import HauntedHouse.Game.Manual;
 import HauntedHouse.Game.Simulation;
+import HauntedHouse.Generated;
 import HauntedHouse.MapDefinitions.Map;
-import HauntedHouse.MapDefinitions.MapExceptions;
-import Structures.BinaryTree.BinaryTreeExceptions;
-import Structures.Graph.GraphExceptions;
-import Structures.Lists.ListExceptions;
-import Structures.Stack.EmptyCollectionException;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
 import java.io.*;
-import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -23,99 +15,12 @@ import java.util.Scanner;
  *
  * @author Jorge, Miguel
  */
+@Generated
 public class Menu {
 
-    Scanner keyboard = new Scanner(System.in);
-
-    private String name;
-    private int points;
-    private JSONArray map;
-    private boolean mapLoaded;
+    private Scanner keyboard = new Scanner(System.in);
     private String opt = "";
-
-    public Menu() {
-        mapLoaded = false;
-    }
-
-    /**
-     * method that loads the map information
-     * from a json file given a
-     *
-     * @param fileLocation file location
-     * @return true if the map is loaded,
-     * or false if it is invalid
-     */
-    public boolean loadMapFile(String fileLocation) {
-        JSONParser parser = new JSONParser();
-
-        try {
-            Object obj = parser.parse(new FileReader(fileLocation));
-            JSONObject jsonObject = (JSONObject) obj;
-
-            name = (String) jsonObject.get("nome");
-            long pointLong = (long) jsonObject.get("pontos");
-            points = Math.toIntExact(pointLong);
-
-            map = (JSONArray) jsonObject.get("mapa");
-            this.mapLoaded = true;
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    /**
-     * Method to know if the map has already been loaded
-     *
-     * @return boolean
-     */
-    public boolean isMapLoaded() {
-        return mapLoaded;
-    }
-
-    /**
-     * Method to create the network graph of the map
-     *
-     * @return Map
-     * @throws MenuExceptions
-     * @throws GraphExceptions
-     * @throws MapExceptions
-     */
-    public Map createMapStructure() throws MenuExceptions,
-            GraphExceptions, MapExceptions {
-
-        if (isMapLoaded() == false) {
-            throw new MenuExceptions(MenuExceptions.MAP_NOT_LOADED);
-        }
-        Map chosenMap = new Map(name, points);
-        Iterator<JSONObject> itrJSon = map.iterator();
-
-        while (itrJSon.hasNext()) {
-            JSONObject tmpObject = itrJSon.next();
-
-            String roomName = (String) tmpObject.get("aposento");
-            long ghostCostLong = (long) tmpObject.get("fantasma");
-            int ghostCost = Math.toIntExact(ghostCostLong);
-
-            chosenMap.addRoomToMap(roomName, ghostCost);
-        }
-
-        itrJSon = map.iterator();
-
-        while (itrJSon.hasNext()) {
-            JSONObject tmpObject = itrJSon.next();
-            String source = (String) tmpObject.get("aposento");
-            JSONArray destArray = (JSONArray) tmpObject.get("ligacoes");
-            Iterator<String> itrDest = destArray.iterator();
-
-            while (itrDest.hasNext()) {
-                String dest = itrDest.next();
-                chosenMap.addConnectionsBetweenRooms(source, dest);
-            }
-        }
-
-        return chosenMap;
-    }
+    private Game game;
 
     /**
      * Game main menu
@@ -165,8 +70,9 @@ public class Menu {
             System.out.println("Introduza o caminho do mapa: ");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String input = reader.readLine();
-            loadMapFile(input);
-            return createMapStructure();
+            MapFile mapFile = new MapFile();
+            mapFile.loadMapFile(input);
+            return mapFile.createMapStructure();
         } catch (Exception e) {
             System.out.println("Mapa Inválido");
             return null;
@@ -221,7 +127,6 @@ public class Menu {
      * @param map
      */
     private void difficultyManual(Map map) {
-        Game manual;
         boolean exit = false;
 
         try {
@@ -235,16 +140,16 @@ public class Menu {
 
                 switch (opt) {
                     case "1":
-                        manual = new Manual(map, Difficulty.EASY);
-                        manual.startGame();
+                        game = new Manual(map, Difficulty.EASY);
+                        game.startGame();
                         break;
                     case "2":
-                        manual = new Manual(map, Difficulty.MEDIUM);
-                        manual.startGame();
+                        game = new Manual(map, Difficulty.MEDIUM);
+                        game.startGame();
                         break;
                     case "3":
-                        manual = new Manual(map, Difficulty.HARD);
-                        manual.startGame();
+                        game = new Manual(map, Difficulty.HARD);
+                        game.startGame();
                         break;
                     case "4":
                         exit = true;
@@ -266,7 +171,6 @@ public class Menu {
      * @param map game map
      */
     private void difficultySimulation(Map map) {
-        Game simulation;
         boolean exit = false;
 
         try {
@@ -281,16 +185,16 @@ public class Menu {
 
                 switch (opt) {
                     case "1":
-                        simulation = new Simulation(map, Difficulty.EASY);
-                        simulation.startGame();
+                        game = new Simulation(map, Difficulty.EASY);
+                        game.startGame();
                         break;
                     case "2":
-                        simulation = new Simulation(map, Difficulty.MEDIUM);
-                        simulation.startGame();
+                        game = new Simulation(map, Difficulty.MEDIUM);
+                        game.startGame();
                         break;
                     case "3":
-                        simulation = new Simulation(map, Difficulty.HARD);
-                        simulation.startGame();
+                        game = new Simulation(map, Difficulty.HARD);
+                        game.startGame();
                         break;
                     case "4":
                         exit = true;
@@ -306,7 +210,7 @@ public class Menu {
     }
 
     /**
-     * Asks the map wich will be used to check ratings
+     * Asks the map name which will be used to check ratings
      */
     private String askMapRatings() throws IOException {
         System.out.println("Introduza o nome do mapa: ");

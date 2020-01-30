@@ -17,6 +17,7 @@ public class MapExceptions extends Exception {
     @Generated
     public MapExceptions() {
     }
+
     @Generated
     public MapExceptions(String message) {
         super(message);

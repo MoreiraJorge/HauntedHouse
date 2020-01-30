@@ -1,5 +1,6 @@
 package HauntedHouse.Game;
 
+import HauntedHouse.Generated;
 import HauntedHouse.MapDefinitions.Room;
 import Structures.Stack.EmptyCollectionException;
 import Structures.Stack.LinkedStack;
@@ -20,7 +21,7 @@ public class Player {
     /**
      * The player points
      */
-    private int playerPoints = 0;
+    private int playerPoints;
 
     /**
      * Player flashbacks
@@ -30,13 +31,24 @@ public class Player {
     /**
      * Player constructor
      *
-     * @param tmpName
+     * @param name
      * @param mapPoints
      */
-    public Player(String tmpName, int mapPoints, Room room) {
-        name = tmpName;
-        playerPoints = mapPoints;
-        flashBack.push(room);
+    @Generated
+    public Player(String name, int mapPoints, Room room) {
+        this.name = name;
+        this.playerPoints = mapPoints;
+        this.flashBack.push(room);
+    }
+
+    /**
+     * Gets the player name
+     *
+     * @return
+     */
+    @Generated
+    public String getName() {
+        return name;
     }
 
     /**
@@ -44,6 +56,7 @@ public class Player {
      *
      * @return
      */
+    @Generated
     public int getPlayerPoints() {
         return playerPoints;
     }
@@ -53,6 +66,7 @@ public class Player {
      *
      * @param playerPoints
      */
+    @Generated
     public void setPlayerPoints(int playerPoints) {
         this.playerPoints = playerPoints;
     }
@@ -72,15 +86,10 @@ public class Player {
      * @return Room
      * @throws EmptyCollectionException
      */
+    @Generated
     public Room getCurrentRoom() throws EmptyCollectionException {
         return flashBack.peek();
     }
 
-    /**
-     * Gets the player name
-     * @return
-     */
-    public String getName() {
-        return name;
-    }
+
 }

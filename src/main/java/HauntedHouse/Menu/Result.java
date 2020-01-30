@@ -1,5 +1,7 @@
 package HauntedHouse.Menu;
 
+import HauntedHouse.Generated;
+
 /**
  *  Result class
  *
@@ -22,6 +24,7 @@ public class Result implements Comparable {
      * @param playerName
      * @param playerPoints
      */
+    @Generated
     public Result(String playerName, int playerPoints) {
         this.playerName = playerName;
         this.playerPoints = playerPoints;

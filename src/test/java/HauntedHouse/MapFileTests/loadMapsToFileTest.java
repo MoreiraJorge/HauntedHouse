@@ -1,6 +1,6 @@
-package HauntedHouse.MenuTest;
+package HauntedHouse.MapFileTests;
 
-import HauntedHouse.Menu.Menu;
+import HauntedHouse.Menu.MapFile;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 @SuppressWarnings("PMD.BeanMembersShouldSerialize")
 public class loadMapsToFileTest {
 
-    Menu menu;
+    MapFile mapFile;
     String fileLocation;
 
     /**
@@ -20,7 +20,7 @@ public class loadMapsToFileTest {
      */
     @BeforeEach
     public void testSetup(){
-        menu = new Menu();
+        mapFile = new MapFile();
     }
 
     /**
@@ -31,7 +31,7 @@ public class loadMapsToFileTest {
     @Test
     public void loadMapWhenFileLocationIsValid(){
         fileLocation = "maps/mapa.json";
-        Assertions.assertTrue(menu.loadMapFile(fileLocation));
+        Assertions.assertTrue(mapFile.loadMapFile(fileLocation));
     }
 
     /**
@@ -42,6 +42,6 @@ public class loadMapsToFileTest {
     @Test
     public void loadMapWhenFileLocationIsInValid(){
         fileLocation = "maps/x.json";
-        Assertions.assertFalse(menu.loadMapFile(fileLocation));
+        Assertions.assertFalse(mapFile.loadMapFile(fileLocation));
     }
 }
