@@ -11,6 +11,7 @@ public enum Difficulty {
     /**
      * method to get the difficulty factor,
      * given a
+     *
      * @param diff difficulty
      * @return the difficulty factor
      */
