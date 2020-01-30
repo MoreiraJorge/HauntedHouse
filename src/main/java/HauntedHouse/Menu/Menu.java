@@ -218,7 +218,6 @@ public class Menu {
      * @param map
      */
     private void difficultyManual(Map map) {
-        Game manual;
         boolean exit = false;
 
         while (!exit) {
