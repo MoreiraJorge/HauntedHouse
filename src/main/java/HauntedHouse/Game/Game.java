@@ -21,9 +21,4 @@ public interface Game {
      */
     public void startGame() throws BinaryTreeExceptions, GraphExceptions, ListExceptions, IOException, MapExceptions, EmptyCollectionException;
 
-    /**
-     * method used to show the current player
-     * points
-     */
-    public void showPlayerPoints();
 }
