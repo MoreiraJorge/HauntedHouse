@@ -53,7 +53,7 @@ public class Manual implements Game {
             System.out.println("------------------------------------------------");
             askNextRoom();
             currentRoom = player.getCurrentRoom();
-            if (currentRoom.getRoomName().equalsIgnoreCase(Map.EXIT) || ) {
+            if (currentRoom.getRoomName().equalsIgnoreCase(Map.EXIT)) {
                 System.out.println("\nFinal do jogo. Pontuação Final : " + this.player.getPlayerPoints() + "\n");
                 break;
             }
