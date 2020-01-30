@@ -20,6 +20,7 @@ public class Menu {
 
     Scanner keyboard = new Scanner(System.in);
     private String opt = "";
+    Game game;
 
     /**
      * Game main menu
@@ -126,7 +127,6 @@ public class Menu {
      * @param map
      */
     private void difficultyManual(Map map) {
-        Game manual;
         boolean exit = false;
 
         try {
@@ -140,16 +140,16 @@ public class Menu {
 
                 switch (opt) {
                     case "1":
-                        manual = new Manual(map, Difficulty.EASY);
-                        manual.startGame();
+                        game = new Manual(map, Difficulty.EASY);
+                        game.startGame();
                         break;
                     case "2":
-                        manual = new Manual(map, Difficulty.MEDIUM);
-                        manual.startGame();
+                        game = new Manual(map, Difficulty.MEDIUM);
+                        game.startGame();
                         break;
                     case "3":
-                        manual = new Manual(map, Difficulty.HARD);
-                        manual.startGame();
+                        game = new Manual(map, Difficulty.HARD);
+                        game.startGame();
                         break;
                     case "4":
                         exit = true;
@@ -171,7 +171,6 @@ public class Menu {
      * @param map game map
      */
     private void difficultySimulation(Map map) {
-        Game simulation;
         boolean exit = false;
 
         try {
@@ -186,16 +185,16 @@ public class Menu {
 
                 switch (opt) {
                     case "1":
-                        simulation = new Simulation(map, Difficulty.EASY);
-                        simulation.startGame();
+                        game = new Simulation(map, Difficulty.EASY);
+                        game.startGame();
                         break;
                     case "2":
-                        simulation = new Simulation(map, Difficulty.MEDIUM);
-                        simulation.startGame();
+                        game = new Simulation(map, Difficulty.MEDIUM);
+                        game.startGame();
                         break;
                     case "3":
-                        simulation = new Simulation(map, Difficulty.HARD);
-                        simulation.startGame();
+                        game = new Simulation(map, Difficulty.HARD);
+                        game.startGame();
                         break;
                     case "4":
                         exit = true;
