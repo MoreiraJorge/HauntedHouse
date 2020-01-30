@@ -32,11 +32,11 @@ public class Menu {
         boolean exit = false;
 
         while (!exit) {
-
+            System.out.println("---------------------------------------");
             System.out.println("1 - Jogar");
             System.out.println("2 - Consultar Classificações");
             System.out.println("3 - Sair");
-
+            System.out.println("---------------------------------------");
             opt = keyboard.nextLine();
 
             switch (opt) {
@@ -88,10 +88,11 @@ public class Menu {
 
         try {
             while (!exit) {
-
+                System.out.println("---------------------------------------");
                 System.out.println("1 - Jogo Manual");
                 System.out.println("2 - Simulação");
                 System.out.println("3 - Voltar");
+                System.out.println("---------------------------------------");
                 opt = keyboard.nextLine();
 
                 switch (opt) {
@@ -128,11 +129,13 @@ public class Menu {
 
         try {
             while (!exit) {
+                System.out.println("---------------------------------------");
                 System.out.println("Escolha dificuldade: ");
                 System.out.println("1 - Fácil");
                 System.out.println("2 - Médio");
                 System.out.println("3 - Difícil");
                 System.out.println("4 - Voltar");
+                System.out.println("---------------------------------------");
                 opt = keyboard.nextLine();
 
                 switch (opt) {
@@ -171,12 +174,13 @@ public class Menu {
 
         try {
             while (!exit) {
-
+                System.out.println("---------------------------------------");
                 System.out.println("Escolha dificuldade: ");
                 System.out.println("1 - Fácil");
                 System.out.println("2 - Médio");
                 System.out.println("3 - Difícil");
                 System.out.println("4 - Voltar");
+                System.out.println("---------------------------------------");
                 opt = keyboard.nextLine();
 
                 switch (opt) {
@@ -224,12 +228,13 @@ public class Menu {
         boolean exit = false;
 
         while (!exit) {
-
+            System.out.println("---------------------------------------");
             System.out.println("Escolha a tabela de resultados da dificuldade que deseja: ");
             System.out.println("1 - Fácil");
             System.out.println("2 - Médio");
             System.out.println("3 - Difícil");
             System.out.println("4 - Voltar");
+            System.out.println("---------------------------------------");
             opt = keyboard.nextLine();
 
             switch (opt) {

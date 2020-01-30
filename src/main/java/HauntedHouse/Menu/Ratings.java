@@ -40,9 +40,6 @@ public class Ratings {
      * @throws IOException
      */
     public static void writeToRatingsFile(String mapTitle, int difficulty) {
-        FileWriter fw = null;
-        BufferedWriter bw = null;
-
         try {
             String filename = "";
 
@@ -63,31 +60,32 @@ public class Ratings {
             String path = "ratings/" + filename;
             File file = new File(path);
 
-            fw = new FileWriter(file);
-            bw = new BufferedWriter(fw);
+            // If file doesn't exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
 
-            file.createNewFile();
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+
             // Write in file
             bw.write(mapTitle);
             bw.write(" - ");
             bw.write(difficultyID);
             bw.newLine();
 
-
             Iterator<Result> resultListItr = resultList.iterator();
-
 
             while (resultListItr.hasNext()) {
 
                 Result tmpRes = resultListItr.next();
 
-                bw.write(tmpRes.playerName + " - Points :"
+                bw.append(tmpRes.playerName + " - Points :"
                         + tmpRes.playerPoints);
                 bw.newLine();
             }
 
-            bw.flush();
-            // Close connection
+
             bw.close();
 
         } catch (Exception e) {

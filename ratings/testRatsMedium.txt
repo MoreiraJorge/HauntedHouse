@@ -1,4 +1,0 @@
-testRats - Medium
-Miguel- Points :50
-Jorge- Points :12
-Dude- Points :10
