@@ -63,14 +63,14 @@ public class Ratings {
             String path = "ratings/" + filename;
             File file = new File(path);
 
-            fw = new FileWriter(file, true);
+            fw = new FileWriter(file);
             bw = new BufferedWriter(fw);
 
             file.createNewFile();
             // Write in file
-            bw.append(mapTitle);
-            bw.append(" - ");
-            bw.append(difficultyID);
+            bw.write(mapTitle);
+            bw.write(" - ");
+            bw.write(difficultyID);
             bw.newLine();
 
 
@@ -81,7 +81,7 @@ public class Ratings {
 
                 Result tmpRes = resultListItr.next();
 
-                bw.append(tmpRes.playerName + " - Points :"
+                bw.write(tmpRes.playerName + " - Points :"
                         + tmpRes.playerPoints);
                 bw.newLine();
             }
