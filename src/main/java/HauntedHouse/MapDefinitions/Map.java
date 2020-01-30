@@ -70,6 +70,14 @@ public class Map {
     }
 
     /**
+     * @return the entrance of the map
+     */
+    @Generated
+    public Room getEntrance() {
+        return entrance;
+    }
+
+    /**
      * Method for adding rooms to the map
      */
     public void addRoomToMap(String roomName, int ghostCost) {
@@ -107,7 +115,7 @@ public class Map {
      * @throws MapExceptions
      */
     @Generated
-    private Room getRoomFromName(String roomName) throws MapExceptions {
+    public Room getRoomFromName(String roomName) throws MapExceptions {
         boolean found = false;
         Room room = null;
         Iterator<Room> searchItr = addedRooms.iterator();
@@ -183,14 +191,7 @@ public class Map {
      * @throws GraphExceptions
      * @throws ListExceptions
      */
-    public Iterator<Room> simulationMode() throws BinaryTreeExceptions, GraphExceptions, ListExceptions {
+    public Iterator<Room> bestPathForMapIterator() throws BinaryTreeExceptions, GraphExceptions, ListExceptions {
         return networkMap.iteratorShortestPath(entrance, exit);
-    }
-
-    /**
-     * @return the entrance of the map
-     */
-    public Room getEntrance() {
-        return entrance;
     }
 }
