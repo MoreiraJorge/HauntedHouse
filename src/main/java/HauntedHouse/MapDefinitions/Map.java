@@ -114,7 +114,6 @@ public class Map {
      * @return Room room
      * @throws MapExceptions
      */
-    @Generated
     public Room getRoomFromName(String roomName) throws MapExceptions {
         boolean found = false;
         Room room = null;
@@ -191,6 +190,7 @@ public class Map {
      * @throws GraphExceptions
      * @throws ListExceptions
      */
+    @Generated
     public Iterator<Room> bestPathForMapIterator() throws BinaryTreeExceptions, GraphExceptions, ListExceptions {
         return networkMap.iteratorShortestPath(entrance, exit);
     }
