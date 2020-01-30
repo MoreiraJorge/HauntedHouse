@@ -51,7 +51,7 @@ public class Manual implements Game {
             System.out.println();
             this.showPlayerPoints();
             System.out.println("------------------------------------------------");
-            askNextRoom();
+            this.nextMove();
             currentRoom = player.getCurrentRoom();
             if (currentRoom.getRoomName().equalsIgnoreCase(Map.EXIT)) {
                 System.out.println("\nFinal do jogo. Pontuação Final : " + this.player.getPlayerPoints() + "\n");
@@ -59,11 +59,11 @@ public class Manual implements Game {
             }
             if(player.getPlayerPoints() <= 0){
                 System.out.println("\nFinal do jogo. Perdeu os Pontos todos de vida. \n");
+                player.setPlayerPoints(0);
+                break;
             }
             System.out.println("------------------------------------------------");
         }
-
-
 
         Result result = new Result(player.getName(),player.getPlayerPoints());
         Ratings.addResult(result);
@@ -76,7 +76,7 @@ public class Manual implements Game {
      * @throws IOException
      * @throws EmptyCollectionException
      */
-    private void askNextRoom() throws IOException, EmptyCollectionException {
+    private void nextMove() throws IOException, EmptyCollectionException {
         System.out.println("Introduza o nome da sala onde deseja ir: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String input = reader.readLine();
