@@ -152,9 +152,7 @@ public class Map {
         Iterator<Room> path = networkMap.iteratorBFS(startRoom);
 
         Room currentRoom = path.next();
-        System.out.println("------------------------------------------------");
         System.out.println("Sala Atual : " + currentRoom.toString(viewGhost));
-        System.out.println("------------------------------------------------");
 
         while (true) {
             System.out.println("------------------------------------------------\n");
@@ -178,6 +176,13 @@ public class Map {
         }
     }
 
+    /**
+     * Method to show the path with least cost
+     * @return Iterador
+     * @throws BinaryTreeExceptions
+     * @throws GraphExceptions
+     * @throws ListExceptions
+     */
     public Iterator<Room> simulationMode() throws BinaryTreeExceptions, GraphExceptions, ListExceptions {
         return networkMap.iteratorShortestPath(entrance, exit);
     }

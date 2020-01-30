@@ -2,12 +2,14 @@ package HauntedHouse.Menu;
 
 import HauntedHouse.Game.Difficulty;
 import HauntedHouse.Game.Game;
+import HauntedHouse.Game.Manual;
 import HauntedHouse.Game.Simulation;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
 import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.ListExceptions;
+import Structures.Stack.EmptyCollectionException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -216,11 +218,11 @@ public class Menu {
      * @param map
      */
     private void difficultyManual(Map map) {
-        //Game manual;
+        Game manual;
         boolean exit = false;
 
         while (!exit) {
-
+            Manual manual;
             System.out.println("Escolha dificuldade: ");
             System.out.println("1 - Fácil");
             System.out.println("2 - Médio");
@@ -230,19 +232,16 @@ public class Menu {
 
             switch (opt) {
                 case "1":
-                    //manual = new Manual(map, Difficulty.EASY);
-                    //manual.startGame();
-                    System.out.println("manual easy");
+                    manual = new Manual(map, Difficulty.EASY);
+                    manual.startGame();
                     break;
                 case "2":
-                    //manual = new Manual(map, Difficulty.MEDIUM);
-                    //manual.startGame();
-                    System.out.println("manual medium");
+                    manual = new Manual(map, Difficulty.MEDIUM);
+                    manual.startGame();
                     break;
                 case "3":
-                    //manual = new Manual(map, Difficulty.HARD);
-                    //manual.startGame();
-                    System.out.println("manual hard");
+                    manual = new Manual(map, Difficulty.HARD);
+                    manual.startGame();
                     break;
                 case "4":
                     exit = true;
