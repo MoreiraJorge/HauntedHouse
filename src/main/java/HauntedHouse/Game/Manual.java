@@ -53,13 +53,17 @@ public class Manual implements Game {
             System.out.println("------------------------------------------------");
             askNextRoom();
             currentRoom = player.getCurrentRoom();
-            if (currentRoom.getRoomName().equalsIgnoreCase(Map.EXIT)) {
+            if (currentRoom.getRoomName().equalsIgnoreCase(Map.EXIT) || ) {
+                System.out.println("\nFinal do jogo. Pontuação Final : " + this.player.getPlayerPoints() + "\n");
                 break;
+            }
+            if(player.getPlayerPoints() <= 0){
+                System.out.println("\nFinal do jogo. Perdeu os Pontos todos de vida. \n");
             }
             System.out.println("------------------------------------------------");
         }
 
-        System.out.println("\nFinal do jogo. Pontuação Final : " + this.player.getPlayerPoints() + "\n");
+
 
         Result result = new Result(player.getName(),player.getPlayerPoints());
         Ratings.addResult(result);
