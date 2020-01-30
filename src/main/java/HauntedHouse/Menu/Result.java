@@ -1,22 +1,24 @@
 package HauntedHouse.Menu;
 
 /**
+ *  Result class
  *
+ * @author Jorge, Miguel
  */
 public class Result implements Comparable {
 
     /**
-     *
+     * The Player name
      */
     String playerName;
 
     /**
-     *
+     * The Player points
      */
     int playerPoints;
 
     /**
-     *
+     * Constructor
      * @param playerName
      * @param playerPoints
      */

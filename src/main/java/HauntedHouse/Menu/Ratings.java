@@ -7,100 +7,117 @@ import java.io.*;
 import java.util.Iterator;
 
 /**
+ * ratings class
  *
+ * @author Jorge , Miguel
  */
 public class Ratings {
 
     /**
-     *
+     * result list of a game
      */
     private OrderedListADT<Result> resultList = new OrderedList();
 
     /**
-     *
-     * @param mapTitle
-     * @param difficulty
+     * Writes Ratings to files,
+     * if the file doesnt exist, create a new one
+     * @param mapTitle map title
+     * @param difficulty game difficulty
      * @throws IOException
+     *
      */
-    public void writeToRatingsFile(String mapTitle, int difficulty) throws IOException {
+    public void writeToRatingsFile(String mapTitle, int difficulty){
+        try {
+            String filename = "";
 
-        String filename = "";
+            String difficultyID = "";
 
-        String difficultyID = "";
+            if (difficulty == 1) {
+                filename = mapTitle + "Easy.txt";
+                difficultyID = "Easy";
+            } else if (difficulty == 2) {
+                filename = mapTitle + "Medium.txt";
+                difficultyID = "Medium";
+            } else if (difficulty == 3) {
+                filename = mapTitle + "Hard.txt";
+                difficultyID = "Hard";
+            }
 
-        if(difficulty == 1){
-            filename = mapTitle + "Easy.txt";
-            difficultyID = "Easy";
-        } else if(difficulty == 2){
-            filename = mapTitle + "Medium.txt";
-            difficultyID = "Medium";
-        } else if(difficulty == 3){
-            filename = mapTitle + "Hard.txt";
-            difficultyID = "Hard";
-        }
+            // Create new file
+            String path = "ratings/" + filename;
+            File file = new File(path);
 
-        // Create new file
-        String path="ratings/" + filename;
-        File file = new File(path);
+            // If file doesn't exists, then create it
+            if (!file.exists()) {
+                file.createNewFile();
+            }
 
-        // If file doesn't exists, then create it
-        if (!file.exists()) {
-            file.createNewFile();
-        }
+            FileWriter fw = new FileWriter(file.getAbsoluteFile());
+            BufferedWriter bw = new BufferedWriter(fw);
 
-        FileWriter fw = new FileWriter(file.getAbsoluteFile());
-        BufferedWriter bw = new BufferedWriter(fw);
+            Iterator<Result> resultListItr = resultList.iterator();
 
-        Iterator<Result> resultListItr = resultList.iterator();
-
-        // Write in file
-        bw.write(mapTitle);
-        bw.write(" - ");
-        bw.write(difficultyID);
-        bw.newLine();
-
-        while(resultListItr.hasNext()){
-
-            Result tmpRes = resultListItr.next();
-
-            bw.append(tmpRes.playerName + " -   Points :"
-                    + tmpRes.playerPoints);
+            // Write in file
+            bw.write(mapTitle);
+            bw.write(" - ");
+            bw.write(difficultyID);
             bw.newLine();
-        }
 
-        // Close connection
-        bw.close();
+            while (resultListItr.hasNext()) {
+
+                Result tmpRes = resultListItr.next();
+
+                bw.append(tmpRes.playerName + " -   Points :"
+                        + tmpRes.playerPoints);
+                bw.newLine();
+            }
+
+            // Close connection
+            bw.close();
+
+        }catch (Exception e){
+            System.out.println("Operação inválida");
+        }
     }
 
     /**
+     *
+     * prints the ratings of a map to the screen
      *
      */
-    public void PrintRatingFile(String mapTitle, int difficulty) throws IOException {
+    public void PrintRatingFile(String mapTitle, int difficulty){
+        try {
 
-        String filename = mapTitle;
+            String filename = mapTitle;
 
-        if(difficulty == 1){
-            filename += "Easy.txt";
-        } else if(difficulty == 2){
-            filename += "Medium.txt";
-        } else  if(difficulty == 3){
-            filename += "Hard.txt";
+            if (difficulty == 1) {
+                filename += "Easy.txt";
+            } else if (difficulty == 2) {
+                filename += "Medium.txt";
+            } else if (difficulty == 3) {
+                filename += "Hard.txt";
+            }
+
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            for (String line; (line = br.readLine()) != null; ) {
+                System.out.println(line);
+
+            }
+
+            br.close();
+
+        }catch (Exception e){
+            System.out.println("ficheiro não encontrado");
         }
-
-        BufferedReader br = new BufferedReader(new FileReader(filename));
-        for (String line; (line = br.readLine()) != null;) {
-            System.out.println(line);
-
-        }
-
-        br.close();
     }
 
+
     /**
-     *
+     * gets the results list
      * @return
      */
     public OrderedListADT<Result> getResultList() {
         return resultList;
     }
+
 }
