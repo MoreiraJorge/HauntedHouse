@@ -7,7 +7,7 @@ import HauntedHouse.Generated;
  *
  * @author Jorge , Miguel
  */
-public class MenuExceptions extends Exception {
+public class MapFileExceptions extends Exception {
 
     /**
      * message for non loaded map
@@ -15,11 +15,11 @@ public class MenuExceptions extends Exception {
     public static final String MAP_NOT_LOADED = "O mapa não foi carregado.";
 
     @Generated
-    public MenuExceptions() {
+    public MapFileExceptions() {
     }
 
     @Generated
-    public MenuExceptions(String message) {
+    public MapFileExceptions(String message) {
         super(message);
     }
 }

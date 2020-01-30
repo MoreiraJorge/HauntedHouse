@@ -3,13 +3,7 @@
  */
 package HauntedHouse;
 
-import HauntedHouse.MapDefinitions.MapExceptions;
 import HauntedHouse.Menu.Menu;
-import HauntedHouse.Menu.MenuExceptions;
-import Structures.BinaryTree.BinaryTreeExceptions;
-import Structures.Graph.GraphExceptions;
-import Structures.Lists.ListExceptions;
-import Structures.Stack.EmptyCollectionException;
 
 import java.io.IOException;
 

@@ -61,15 +61,15 @@ public class MapFile {
      * Method to create the network graph of the map
      *
      * @return Map
-     * @throws MenuExceptions
+     * @throws MapFileExceptions
      * @throws GraphExceptions
      * @throws MapExceptions
      */
-    public Map createMapStructure() throws MenuExceptions,
+    public Map createMapStructure() throws MapFileExceptions,
             GraphExceptions, MapExceptions {
 
         if (isMapLoaded() == false) {
-            throw new MenuExceptions(MenuExceptions.MAP_NOT_LOADED);
+            throw new MapFileExceptions(MapFileExceptions.MAP_NOT_LOADED);
         }
         Map chosenMap = new Map(name, points);
         Iterator<JSONObject> itrJSon = map.iterator();

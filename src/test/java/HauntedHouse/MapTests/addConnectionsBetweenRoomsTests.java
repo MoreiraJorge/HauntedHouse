@@ -3,7 +3,7 @@ package HauntedHouse.MapTests;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
 import HauntedHouse.Menu.MapFile;
-import HauntedHouse.Menu.MenuExceptions;
+import HauntedHouse.Menu.MapFileExceptions;
 import Structures.Graph.GraphExceptions;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ public class addConnectionsBetweenRoomsTests {
      * test cases setup
      */
     @BeforeEach
-    public void testSetup() throws GraphExceptions, MenuExceptions, MapExceptions {
+    public void testSetup() throws GraphExceptions, MapFileExceptions, MapExceptions {
         mapFile = new MapFile();
         mapFile.loadMapFile("maps/mapa.json");
         map = mapFile.createMapStructure();
