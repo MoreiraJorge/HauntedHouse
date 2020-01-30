@@ -18,9 +18,9 @@ import java.util.Scanner;
 @Generated
 public class Menu {
 
-    Scanner keyboard = new Scanner(System.in);
+    private Scanner keyboard = new Scanner(System.in);
     private String opt = "";
-    Game game;
+    private Game game;
 
     /**
      * Game main menu
