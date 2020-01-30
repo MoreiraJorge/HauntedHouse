@@ -75,4 +75,12 @@ public class Player {
     public Room getCurrentRoom() throws EmptyCollectionException {
         return flashBack.peek();
     }
+
+    /**
+     * Gets the player name
+     * @return
+     */
+    public String getName() {
+        return name;
+    }
 }

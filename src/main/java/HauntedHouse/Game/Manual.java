@@ -3,6 +3,9 @@ package HauntedHouse.Game;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
 import HauntedHouse.MapDefinitions.Room;
+import HauntedHouse.Menu.Ratings;
+import HauntedHouse.Menu.Result;
+import Structures.Lists.ListExceptions;
 import Structures.Stack.EmptyCollectionException;
 
 import java.io.BufferedReader;
@@ -38,7 +41,7 @@ public class Manual implements Game {
     }
 
     @Override
-    public void startGame() throws EmptyCollectionException, IOException, MapExceptions {
+    public void startGame() throws EmptyCollectionException, IOException, MapExceptions, ListExceptions {
         Room currentRoom = player.getCurrentRoom();
 
         System.out.println("------------------------------------------------");
@@ -57,6 +60,10 @@ public class Manual implements Game {
         }
 
         System.out.println("\nFinal do jogo. Pontuação Final : " + this.player.getPlayerPoints() + "\n");
+
+        Result result = new Result(player.getName(),player.getPlayerPoints());
+        Ratings.addResult(result);
+        Ratings.writeToRatingsFile(map.getTitle(),diff);
     }
 
     /**
