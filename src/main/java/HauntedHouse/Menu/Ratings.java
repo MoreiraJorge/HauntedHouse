@@ -1,5 +1,6 @@
 package HauntedHouse.Menu;
 
+import HauntedHouse.Generated;
 import Structures.Lists.ListExceptions;
 import Structures.Lists.OrderedList;
 import Structures.Lists.OrderedListADT;
@@ -12,6 +13,7 @@ import java.util.Iterator;
  *
  * @author Jorge , Miguel
  */
+@Generated
 public class Ratings {
 
     /**
@@ -20,15 +22,24 @@ public class Ratings {
     private static OrderedListADT<Result> resultList = new OrderedList();
 
     /**
+     * add a player result to the result list
      *
+     * @param res
+     * @throws ListExceptions
+     */
+    public static void addResult(Result res) throws ListExceptions {
+        resultList.add(res);
+    }
+
+    /**
      * Writes Ratings to files,
      * if the file doesnt exist, create a new one
-     * @param mapTitle map title
+     *
+     * @param mapTitle   map title
      * @param difficulty game difficulty
      * @throws IOException
-     *
      */
-    public static void writeToRatingsFile(String mapTitle, int difficulty){
+    public static void writeToRatingsFile(String mapTitle, int difficulty) {
         try {
             String filename = "";
 
@@ -77,17 +88,15 @@ public class Ratings {
             // Close connection
             bw.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Operação inválida");
         }
     }
 
     /**
-     *
      * prints the ratings of a map to the screen
-     *
      */
-    public static void PrintRatingFile(String mapTitle, int difficulty){
+    public static void PrintRatingFile(String mapTitle, int difficulty) {
         try {
 
             String filename = mapTitle;
@@ -108,17 +117,8 @@ public class Ratings {
 
             br.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("ficheiro não encontrado");
         }
-    }
-
-    /**
-     * add a player result to the result list
-     * @param res
-     * @throws ListExceptions
-     */
-    public static void addResult(Result res) throws ListExceptions {
-        resultList.add(res);
     }
 }
