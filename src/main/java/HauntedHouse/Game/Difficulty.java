@@ -1,10 +1,13 @@
 package HauntedHouse.Game;
 
+import HauntedHouse.Generated;
+
 /**
  * Enum class with Difficulty levels
  *
  * @author Jorge, Miguel
  */
+@Generated
 public enum Difficulty {
     EASY, MEDIUM, HARD;
 
