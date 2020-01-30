@@ -53,25 +53,20 @@ public class Manual implements Game {
             System.out.println("------------------------------------------------");
             this.nextMove();
             currentRoom = player.getCurrentRoom();
-            if (currentRoom.getRoomName().equalsIgnoreCase(Map.EXIT)) {
-                System.out.println("\nFinal do jogo. Pontuação Final : " + this.player.getPlayerPoints() + "\n");
-                break;
-            }
-            if(player.getPlayerPoints() <= 0){
-                System.out.println("\nFinal do jogo. Perdeu os Pontos todos de vida. \n");
-                player.setPlayerPoints(0);
+            if (currentRoom.getRoomName().equalsIgnoreCase(Map.EXIT) || player.getPlayerPoints() <= 0) {
+                this.endGame();
                 break;
             }
             System.out.println("------------------------------------------------");
         }
 
-        Result result = new Result(player.getName(),player.getPlayerPoints());
+        Result result = new Result(player.getName(), player.getPlayerPoints());
         Ratings.addResult(result);
-        Ratings.writeToRatingsFile(map.getTitle(),diff);
+        Ratings.writeToRatingsFile(map.getTitle(), diff);
     }
 
     /**
-     * Method to ask the player for their next move
+     * Method to ask the player for their next move and execute the move
      *
      * @throws IOException
      * @throws EmptyCollectionException
@@ -100,8 +95,25 @@ public class Manual implements Game {
         }
     }
 
-    @Override
-    public void showPlayerPoints() {
+    /**
+     * Method to print the end message of the game depending on the result
+     *
+     * @throws EmptyCollectionException
+     */
+    private void endGame() throws EmptyCollectionException {
+        if (player.getPlayerPoints() <= 0) {
+            System.out.println("\nFinal do jogo. Perdeu todos os pontos de vida. \n");
+            player.setPlayerPoints(0);
+        } else if (player.getCurrentRoom().getRoomName().equalsIgnoreCase(Map.EXIT)) {
+            System.out.println("\nFinal do jogo. Pontuação Final : " + this.player.getPlayerPoints() + "\n");
+        }
+    }
+
+    /**
+     * Method used to show the current player
+     * points
+     */
+    private void showPlayerPoints() {
         System.out.println("Pontuação Atual: " + player.getPlayerPoints());
     }
 }
