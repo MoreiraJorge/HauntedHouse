@@ -9,11 +9,13 @@ import HauntedHouse.Menu.MenuExceptions;
 import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.ListExceptions;
+import Structures.Stack.EmptyCollectionException;
 
 import java.io.IOException;
 
 /**
  * Main Class
+ *
  * @author Jorge Moreira, Miguel Costa
  */
 @Generated
@@ -25,12 +27,12 @@ public class App {
     private static Menu menu = new Menu();
 
     /**
-     * main method
+     * Main method
+     *
      * @param args
      */
     @Generated
-    public static void main(String[] args) throws MapExceptions, MenuExceptions,
-            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions {
+    public static void main(String[] args) throws IOException{
         menu.mainMenu();
     }
 }

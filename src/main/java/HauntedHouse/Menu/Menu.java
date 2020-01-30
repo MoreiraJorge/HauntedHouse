@@ -9,6 +9,7 @@ import HauntedHouse.MapDefinitions.MapExceptions;
 import Structures.BinaryTree.BinaryTreeExceptions;
 import Structures.Graph.GraphExceptions;
 import Structures.Lists.ListExceptions;
+import Structures.Stack.EmptyCollectionException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -225,7 +226,6 @@ public class Menu {
 
         try {
             while (!exit) {
-
                 System.out.println("Escolha dificuldade: ");
                 System.out.println("1 - Fácil");
                 System.out.println("2 - Médio");
@@ -237,17 +237,14 @@ public class Menu {
                     case "1":
                         manual = new Manual(map, Difficulty.EASY);
                         manual.startGame();
-                        System.out.println("manual easy");
                         break;
                     case "2":
                         manual = new Manual(map, Difficulty.MEDIUM);
                         manual.startGame();
-                        System.out.println("manual medium");
                         break;
                     case "3":
                         manual = new Manual(map, Difficulty.HARD);
                         manual.startGame();
-                        System.out.println("manual hard");
                         break;
                     case "4":
                         exit = true;
