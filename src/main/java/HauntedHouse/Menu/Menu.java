@@ -14,10 +14,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -34,7 +31,7 @@ public class Menu {
     private int points;
     private JSONArray map;
     private boolean mapLoaded;
-    private int opt = 0;
+    private String opt = "";
 
     public Menu() {
         mapLoaded = false;
@@ -84,7 +81,9 @@ public class Menu {
      * @throws GraphExceptions
      * @throws MapExceptions
      */
-    public Map createMapStructure() throws MenuExceptions, GraphExceptions, MapExceptions {
+    public Map createMapStructure() throws MenuExceptions,
+            GraphExceptions, MapExceptions {
+
         if (isMapLoaded() == false) {
             throw new MenuExceptions(MenuExceptions.MAP_NOT_LOADED);
         }
@@ -119,30 +118,34 @@ public class Menu {
     }
 
     /**
-     * @throws MapExceptions
-     * @throws MenuExceptions
-     * @throws GraphExceptions
+     * Game main menu
+     *
      * @throws IOException
      */
-    public void mainMenu() throws MapExceptions, MenuExceptions,
-            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions, EmptyCollectionException {
+    public void mainMenu() throws IOException {
         boolean exit = false;
+        Map map;
+
 
         while (!exit) {
 
             System.out.println("1 - Jogar");
             System.out.println("2 - Consultar Classificações");
             System.out.println("3 - Sair");
-            opt = keyboard.nextInt();
+
+            opt = keyboard.nextLine();
 
             switch (opt) {
-                case 1:
-                    chooseGameMenu(askMapPath());
+                case "1":
+                    map = askMapPath();
+                    if (map != null) {
+                        chooseGameMenu(map);
+                    }
                     break;
-                case 2:
-                    System.out.println("classificações");
+                case "2":
+                    chooseDifficultyRatings(askMapRatings());
                     break;
-                case 3:
+                case "3":
                     exit = true;
                     break;
                 default:
@@ -150,136 +153,196 @@ public class Menu {
                     break;
             }
         }
-
     }
 
     /**
-     * @throws IOException
+     * Asks the user the game map path
+     *
+     * @return the game map
      */
-    private Map askMapPath() throws IOException, GraphExceptions, MenuExceptions, MapExceptions {
-        System.out.println("Introduza o caminho do mapa: ");
+    private Map askMapPath() {
+        try {
+            System.out.println("Introduza o caminho do mapa: ");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String input = reader.readLine();
+            loadMapFile(input);
+            return createMapStructure();
+        } catch (Exception e) {
+            System.out.println("Mapa Inválido");
+            return null;
+        }
+    }
+
+    /**
+     * Asks the user what game type
+     * he/she wants
+     *
+     * @param map the game map
+     */
+    private void chooseGameMenu(Map map) {
+        boolean exit = false;
+
+        try {
+            while (!exit) {
+
+                System.out.println("1 - Jogo Manual");
+                System.out.println("2 - Simulação");
+                System.out.println("3 - Voltar");
+                opt = keyboard.nextLine();
+
+                switch (opt) {
+                    case "1":
+                        difficultyManual(map);
+                        break;
+                    case "2":
+                        difficultySimulation(map);
+                        break;
+                    case "3":
+                        exit = true;
+                        break;
+                    default:
+                        System.out.println("Opção inválida");
+                        break;
+                }
+
+            }
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+
+    /**
+     * Asks the user the difficulty of
+     * the game in manual and starts
+     *
+     * @param map
+     */
+    private void difficultyManual(Map map) {
+        Game manual;
+        boolean exit = false;
+
+        try {
+            while (!exit) {
+                System.out.println("Escolha dificuldade: ");
+                System.out.println("1 - Fácil");
+                System.out.println("2 - Médio");
+                System.out.println("3 - Difícil");
+                System.out.println("4 - Voltar");
+                opt = keyboard.nextLine();
+
+                switch (opt) {
+                    case "1":
+                        manual = new Manual(map, Difficulty.EASY);
+                        manual.startGame();
+                        break;
+                    case "2":
+                        manual = new Manual(map, Difficulty.MEDIUM);
+                        manual.startGame();
+                        break;
+                    case "3":
+                        manual = new Manual(map, Difficulty.HARD);
+                        manual.startGame();
+                        break;
+                    case "4":
+                        exit = true;
+                        break;
+                    default:
+                        System.out.println("Opção inválida");
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Asks the user the difficulty of
+     * the game in simulation and starts
+     *
+     * @param map game map
+     */
+    private void difficultySimulation(Map map) {
+        Game simulation;
+        boolean exit = false;
+
+        try {
+            while (!exit) {
+
+                System.out.println("Escolha dificuldade: ");
+                System.out.println("1 - Fácil");
+                System.out.println("2 - Médio");
+                System.out.println("3 - Difícil");
+                System.out.println("4 - Voltar");
+                opt = keyboard.nextLine();
+
+                switch (opt) {
+                    case "1":
+                        simulation = new Simulation(map, Difficulty.EASY);
+                        simulation.startGame();
+                        break;
+                    case "2":
+                        simulation = new Simulation(map, Difficulty.MEDIUM);
+                        simulation.startGame();
+                        break;
+                    case "3":
+                        simulation = new Simulation(map, Difficulty.HARD);
+                        simulation.startGame();
+                        break;
+                    case "4":
+                        exit = true;
+                        break;
+                    default:
+                        System.out.println("Opção inválida");
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * Asks the map wich will be used to check ratings
+     */
+    private String askMapRatings() throws IOException {
+        System.out.println("Introduza o nome do mapa: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String input = reader.readLine();
-        loadMapFile(input);
-        return createMapStructure();
+        return input;
     }
 
     /**
-     * @throws IOException
-     * @throws GraphExceptions
-     * @throws MenuExceptions
-     * @throws MapExceptions
+     * Asks the user the ratings from various game
+     * difficulties of the map
      */
-    private void chooseGameMenu(Map map) throws MapExceptions, ListExceptions,
-            BinaryTreeExceptions, GraphExceptions, IOException, EmptyCollectionException {
-
+    private void chooseDifficultyRatings(String name) {
+        String path = "ratings/" + name;
         boolean exit = false;
 
         while (!exit) {
 
-            System.out.println("1 - Jogo Manual");
-            System.out.println("2 - Simulação");
-            System.out.println("3 - Voltar");
-            opt = keyboard.nextInt();
-
-            switch (opt) {
-                case 1:
-                    difficultyManual(map);
-                    break;
-                case 2:
-                    difficultySimulation(map);
-                    break;
-                case 3:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    break;
-            }
-
-        }
-    }
-
-
-    /**
-     * @param map
-     * @throws MapExceptions
-     * @throws MenuExceptions
-     * @throws GraphExceptions
-     * @throws IOException
-     */
-    private void difficultyManual(Map map) throws MapExceptions, IOException, EmptyCollectionException {
-
-        boolean exit = false;
-
-        while (!exit) {
-            Manual manual;
-            System.out.println("Escolha dificuldade: ");
+            System.out.println("Escolha a tabela de resultados da dificuldade que deseja: ");
             System.out.println("1 - Fácil");
             System.out.println("2 - Médio");
             System.out.println("3 - Difícil");
             System.out.println("4 - Voltar");
-            opt = keyboard.nextInt();
+            opt = keyboard.nextLine();
 
             switch (opt) {
-                case 1:
-                    manual = new Manual(map, Difficulty.EASY);
-                    manual.startGame();
+                case "1":
+                    Ratings.PrintRatingFile(path, 1);
                     break;
-                case 2:
-                    manual = new Manual(map, Difficulty.MEDIUM);
-                    manual.startGame();
+                case "2":
+                    Ratings.PrintRatingFile(path, 2);
                     break;
-                case 3:
-                    manual = new Manual(map, Difficulty.HARD);
-                    manual.startGame();
+                case "3":
+                    Ratings.PrintRatingFile(path, 3);
                     break;
-                case 4:
-                    exit = true;
-                    break;
-                default:
-                    System.out.println("Opção inválida");
-                    break;
-            }
-        }
-    }
-
-    /**
-     * @param map
-     * @throws MapExceptions
-     * @throws MenuExceptions
-     * @throws GraphExceptions
-     * @throws IOException
-     */
-    private void difficultySimulation(Map map) throws IOException, ListExceptions,
-            MapExceptions, GraphExceptions, BinaryTreeExceptions, EmptyCollectionException {
-        Game simulation;
-
-        boolean exit = false;
-
-        while (!exit) {
-
-            System.out.println("Escolha dificuldade: ");
-            System.out.println("1 - Fácil");
-            System.out.println("2 - Médio");
-            System.out.println("3 - Difícil");
-            System.out.println("4 - Voltar");
-            opt = keyboard.nextInt();
-
-            switch (opt) {
-                case 1:
-                    simulation = new Simulation(map, Difficulty.EASY);
-                    simulation.startGame();
-                    break;
-                case 2:
-                    simulation = new Simulation(map, Difficulty.MEDIUM);
-                    simulation.startGame();
-                    break;
-                case 3:
-                    simulation = new Simulation(map, Difficulty.HARD);
-                    simulation.startGame();
-                    break;
-                case 4:
+                case "4":
                     exit = true;
                     break;
                 default:

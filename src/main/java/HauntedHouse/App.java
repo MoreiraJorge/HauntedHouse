@@ -32,8 +32,7 @@ public class App {
      * @param args
      */
     @Generated
-    public static void main(String[] args) throws MapExceptions, MenuExceptions,
-            GraphExceptions, IOException, ListExceptions, BinaryTreeExceptions, EmptyCollectionException {
+    public static void main(String[] args) throws IOException{
         menu.mainMenu();
     }
 }
