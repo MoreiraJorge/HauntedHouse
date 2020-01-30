@@ -1,5 +1,6 @@
 package HauntedHouse.Game;
 
+import HauntedHouse.Generated;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
 import HauntedHouse.MapDefinitions.Room;
@@ -16,6 +17,7 @@ import java.util.Scanner;
  *
  * @author Jorge, Miguel
  */
+@Generated
 public class Simulation implements Game {
 
     private Map map;
