@@ -21,6 +21,7 @@ public class Menu {
     private Scanner keyboard = new Scanner(System.in);
     private String opt = "";
     private Game game;
+    private Map map;
 
     /**
      * Game main menu
@@ -29,8 +30,6 @@ public class Menu {
      */
     public void mainMenu() throws IOException {
         boolean exit = false;
-        Map map;
-
 
         while (!exit) {
 
@@ -44,7 +43,7 @@ public class Menu {
                 case "1":
                     map = askMapPath();
                     if (map != null) {
-                        chooseGameMenu(map);
+                        chooseGameMenu();
                     }
                     break;
                 case "2":
@@ -83,9 +82,8 @@ public class Menu {
      * Asks the user what game type
      * he/she wants
      *
-     * @param map the game map
      */
-    private void chooseGameMenu(Map map) {
+    private void chooseGameMenu() {
         boolean exit = false;
 
         try {
@@ -98,10 +96,10 @@ public class Menu {
 
                 switch (opt) {
                     case "1":
-                        difficultyManual(map);
+                        difficultyManual();
                         break;
                     case "2":
-                        difficultySimulation(map);
+                        difficultySimulation();
                         break;
                     case "3":
                         exit = true;
@@ -124,9 +122,8 @@ public class Menu {
      * Asks the user the difficulty of
      * the game in manual and starts
      *
-     * @param map
      */
-    private void difficultyManual(Map map) {
+    private void difficultyManual() {
         boolean exit = false;
 
         try {
@@ -168,9 +165,8 @@ public class Menu {
      * Asks the user the difficulty of
      * the game in simulation and starts
      *
-     * @param map game map
      */
-    private void difficultySimulation(Map map) {
+    private void difficultySimulation() {
         boolean exit = false;
 
         try {
