@@ -208,9 +208,7 @@ public class Menu {
      * @throws GraphExceptions
      * @throws IOException
      */
-    private void difficultyManual(Map map) throws MapExceptions, IOException, BinaryTreeExceptions,
-            GraphExceptions, ListExceptions, EmptyCollectionException {
-        //Game manual;
+    private void difficultyManual(Map map) throws MapExceptions, IOException, EmptyCollectionException {
 
         boolean exit = false;
 
