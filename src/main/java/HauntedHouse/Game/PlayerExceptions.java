@@ -1,11 +1,14 @@
 package HauntedHouse.Game;
 
+import HauntedHouse.Generated;
+
 /**
  * Class with exceptions to use on Player
  * class
  *
  * @author Jorge, Miguel
  */
+@Generated
 public class PlayerExceptions extends Exception {
 
     /**
