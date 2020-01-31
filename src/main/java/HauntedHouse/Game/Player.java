@@ -110,6 +110,7 @@ public class Player {
             if (numberOfFlashBacks > 0) {
                 Room tmpRoom = flashBack.pop();
                 this.playerPoints = this.playerPoints + (tmpRoom.getGhostCost() * Diff);
+                numberOfFlashBacks--;
             } else {
                 throw new PlayerExceptions(PlayerExceptions.NUMBER_OF_FLASHBACK_IS_ZERO);
             }
