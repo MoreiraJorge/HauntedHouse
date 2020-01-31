@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 /**
  * Commands for console application
  */
+@Generated
 public class ConsoleCommands {
 
     /**
