@@ -28,6 +28,12 @@ public class Player {
      */
     private StackADT<Room> flashBack = new LinkedStack();
 
+
+    /**
+     * Number of available flashbacks
+     */
+    private int numberOfFlashBacks;
+
     /**
      * Player constructor
      *
@@ -39,6 +45,7 @@ public class Player {
         this.name = name;
         this.playerPoints = mapPoints;
         this.flashBack.push(room);
+        this.numberOfFlashBacks = 3;
     }
 
     /**
@@ -91,5 +98,24 @@ public class Player {
         return flashBack.peek();
     }
 
+    /**
+     * Method to use flashback ability
+     *
+     * @param Diff difficulty
+     * @throws PlayerExceptions
+     * @throws EmptyCollectionException
+     */
+    public void useFlashBack(int Diff) throws PlayerExceptions, EmptyCollectionException {
+        if (flashBack.size() > 1) {
+            if (numberOfFlashBacks > 0) {
+                Room tmpRoom = flashBack.pop();
+                this.playerPoints = this.playerPoints + (tmpRoom.getGhostCost() * Diff);
+            } else {
+                throw new PlayerExceptions(PlayerExceptions.NUMBER_OF_FLASHBACK_IS_ZERO);
+            }
+        } else {
+            throw new PlayerExceptions(PlayerExceptions.FLASHBACK_CANNOT_BE_USED);
+        }
+    }
 
 }

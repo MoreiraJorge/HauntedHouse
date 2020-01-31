@@ -1,5 +1,6 @@
 package HauntedHouse.Game;
 
+import HauntedHouse.ConsoleCommands;
 import HauntedHouse.Generated;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
@@ -44,23 +45,26 @@ public class Manual implements Game {
 
     @Override
     public void startGame() throws EmptyCollectionException, IOException, MapExceptions, ListExceptions {
-        Room currentRoom = player.getCurrentRoom();
 
+        ConsoleCommands.clearConsole();
         System.out.println("------------------------------------------------");
         System.out.println("Começo do Jogo : \n");
         while (true) {
-            map.printMapFromRoom(currentRoom.toString(), true);
+            map.printMapFromRoom(player.getCurrentRoom().toString(), true);
             System.out.println();
             this.showPlayerPoints();
             System.out.println("------------------------------------------------");
+            if(player.getCurrentRoom().getRoomName().equalsIgnoreCase(Map.ENTRANCE) == false){
+                this.askFlashback();
+            }
             this.nextMove();
-            currentRoom = player.getCurrentRoom();
-            if (currentRoom.getRoomName().equalsIgnoreCase(Map.EXIT) || player.getPlayerPoints() <= 0) {
+            if (player.getCurrentRoom().getRoomName().equalsIgnoreCase(Map.EXIT) || player.getPlayerPoints() <= 0) {
                 this.endGame();
                 break;
             }
             System.out.println("------------------------------------------------");
-        }
+            ConsoleCommands.clearConsole();
+    }
 
         Result result = new Result(player.getName(), player.getPlayerPoints());
         Ratings.addResult(result);
@@ -97,12 +101,41 @@ public class Manual implements Game {
         }
     }
 
+    private void askFlashback() throws IOException {
+        System.out.println("Deseja usar um flashback?(S/N)");
+        while (true) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String input = reader.readLine();
+            System.out.println("------------------------------------------------");
+
+            if (input.equalsIgnoreCase("S")) {
+                try {
+                    player.useFlashBack(diff);
+                    ConsoleCommands.clearConsole();
+                    System.out.println("Posição Atual: " + player.getCurrentRoom().toString(true));
+                    this.showPlayerPoints();
+                    System.out.println("------------------------------------------------");
+                    System.out.println("Deseja usar um flashback?(S/N) outra vez");
+                    continue;
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                    System.out.println("------------------------------------------------");
+                    break;
+                }
+            } else if (input.equalsIgnoreCase("N")) {
+                break;
+            }
+            System.out.println("Input Inválido.");
+        }
+    }
+
     /**
      * Method to print the end message of the game depending on the result
      *
      * @throws EmptyCollectionException
      */
     private void endGame() throws EmptyCollectionException {
+        ConsoleCommands.clearConsole();
         if (player.getPlayerPoints() <= 0) {
             System.out.println("\nFinal do jogo. Perdeu todos os pontos de vida. \n");
             player.setPlayerPoints(0);
