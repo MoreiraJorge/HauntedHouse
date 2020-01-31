@@ -106,6 +106,7 @@ public class Manual implements Game {
         while (true) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String input = reader.readLine();
+            System.out.println("Flashbacks Disponívies : " + player.getNumberOfFlashBacks());
             System.out.println("------------------------------------------------");
 
             if (input.equalsIgnoreCase("S")) {
@@ -114,6 +115,7 @@ public class Manual implements Game {
                     ConsoleCommands.clearConsole();
                     System.out.println("Posição Atual: " + player.getCurrentRoom().toString(true));
                     this.showPlayerPoints();
+                    System.out.println("Flashbacks Disponívies : " + player.getNumberOfFlashBacks());
                     System.out.println("------------------------------------------------");
                     System.out.println("Deseja usar um flashback?(S/N) outra vez");
                     continue;

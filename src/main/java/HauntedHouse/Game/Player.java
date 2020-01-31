@@ -99,6 +99,16 @@ public class Player {
     }
 
     /**
+     * Method to obtain the number of flashes available
+     *
+     * @return number of flashes
+     */
+    @Generated
+    public int getNumberOfFlashBacks() {
+        return numberOfFlashBacks;
+    }
+
+    /**
      * Method to use flashback ability
      *
      * @param Diff difficulty
