@@ -45,7 +45,6 @@ public class Manual implements Game {
 
     @Override
     public void startGame() throws EmptyCollectionException, IOException, MapExceptions, ListExceptions {
-
         ConsoleCommands.clearConsole();
         System.out.println("------------------------------------------------");
         System.out.println("Começo do Jogo : \n");
@@ -100,6 +99,7 @@ public class Manual implements Game {
             System.out.println("Escolha inválida.");
         }
     }
+
 
     private void askFlashback() throws IOException {
         System.out.println("Deseja usar um flashback?(S/N)");

@@ -232,6 +232,7 @@ public class Menu {
     private void chooseDifficultyRatings(String name) {
         String path = "ratings/" + name;
         boolean exit = false;
+      
         ConsoleCommands.clearConsole();
         while (!exit) {
             System.out.println("------------------------------------------------");

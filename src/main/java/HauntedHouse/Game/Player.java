@@ -28,7 +28,6 @@ public class Player {
      */
     private StackADT<Room> flashBack = new LinkedStack();
 
-
     /**
      * Number of available flashbacks
      */
@@ -97,7 +96,7 @@ public class Player {
     public Room getCurrentRoom() throws EmptyCollectionException {
         return flashBack.peek();
     }
-
+  
     /**
      * Method to obtain the number of flashes available
      *
