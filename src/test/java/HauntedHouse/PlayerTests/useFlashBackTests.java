@@ -8,12 +8,21 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Test class for useFlashBack
+ * method
+ *
+ * @author Jorge, Miguel
+ */
 public class useFlashBackTests {
 
     Player player;
     Room oldRoom;
     Room newRoom;
 
+    /**
+     * test cases setup
+     */
     @BeforeEach
     public void testSetup() {
         oldRoom = new Room("Entrada", 0);
@@ -21,13 +30,20 @@ public class useFlashBackTests {
         newRoom = new Room("Hall", 0);
     }
 
+    /**
+     * Test to see if is returned an exception when stack size is 1
+     * and the user calls the method useFlashBack
+     */
     @Test
-    public void useFlashWhenSizeOfStackIsOneTest(){
-        Assertions.assertThrows(PlayerExceptions.class, () ->{
+    public void useFlashWhenSizeOfStackIsOneTest() {
+        Assertions.assertThrows(PlayerExceptions.class, () -> {
             player.useFlashBack(1);
         });
     }
 
+    /**
+     * Test to see if the work of the method useFlashBack is done correctly
+     */
     @Test
     public void useFlashWhenValidTest() throws EmptyCollectionException, PlayerExceptions {
         player.makeMove(newRoom);
@@ -35,6 +51,10 @@ public class useFlashBackTests {
         Assertions.assertEquals(player.getCurrentRoom(), oldRoom);
     }
 
+    /**
+     * Test to see if is returned an exception when numberOfFlashes is zero
+     * and the user calls the method useFlashBack
+     */
     @Test
     public void useFlashWhenNumberOfFlashIsZeroTest() throws EmptyCollectionException, PlayerExceptions {
         player.makeMove(newRoom);
@@ -44,7 +64,7 @@ public class useFlashBackTests {
         player.makeMove(newRoom);
         player.useFlashBack(1);
         player.makeMove(newRoom);
-        Assertions.assertThrows(PlayerExceptions.class, () ->{
+        Assertions.assertThrows(PlayerExceptions.class, () -> {
             player.useFlashBack(1);
         });
     }
