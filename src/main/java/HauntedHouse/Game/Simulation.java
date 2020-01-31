@@ -1,5 +1,6 @@
 package HauntedHouse.Game;
 
+import HauntedHouse.ConsoleCommands;
 import HauntedHouse.Generated;
 import HauntedHouse.MapDefinitions.Map;
 import HauntedHouse.MapDefinitions.MapExceptions;
@@ -41,6 +42,7 @@ public class Simulation implements Game {
         Iterator<Room> path = map.bestPathForMapIterator();
         int steps = 1;
 
+        ConsoleCommands.clearConsole();
         Room currentRoom = path.next();
         System.out.println("------------------------------------------------");
         System.out.println("Começo do Jogo : \n");
@@ -60,6 +62,7 @@ public class Simulation implements Game {
             steps++;
         }
 
+        ConsoleCommands.clearConsole();
         System.out.println("\nFinal do jogo. Pontuação Final : " + this.points + "\n");
     }
 
