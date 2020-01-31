@@ -3,16 +3,30 @@
  */
 package HauntedHouse;
 
+import HauntedHouse.Menu.Menu;
+
+import java.io.IOException;
+
 /**
  * Main Class
+ *
  * @author Jorge Moreira, Miguel Costa
  */
+@Generated
 public class App {
+
     /**
-     * main method
+     * Menu instance
+     */
+    private static Menu menu = new Menu();
+
+    /**
+     * Main method
+     *
      * @param args
      */
-    public static void main(String[] args) {
-        System.out.println("");
+    @Generated
+    public static void main(String[] args) throws IOException{
+        menu.mainMenu();
     }
 }

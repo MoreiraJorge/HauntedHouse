@@ -32,6 +32,9 @@ dependencies {
     // This dependency is used by the application.
     implementation 'com.google.guava:guava:28.1-jre'
 
+    // This dependency is used to consume json files
+    compile 'com.googlecode.json-simple:json-simple:1.1.1'
+
     // Use JUnit Jupiter API for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.4.2'
 
@@ -68,7 +71,7 @@ jacocoTestReport {
 jar {
     manifest {
         attributes(
-                "Main-Class": "App.Demo",
+                "Main-Class": "HauntedHouse.App",
                 "Built-by" : "Jorge Moreira, Miguel Costa",
                 "Scope" : "Trabalho Estrutura de Dados"
 
@@ -84,6 +87,10 @@ jar {
 pmd {
     ignoreFailures = true
     pmdTest.enabled= true
+    ruleSets = [
+            'java-basic',
+            'java-braces'
+    ]
 }
 
 test.finalizedBy(jacocoTestReport, jar)
