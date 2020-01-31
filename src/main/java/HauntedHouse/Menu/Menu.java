@@ -1,5 +1,6 @@
 package HauntedHouse.Menu;
 
+import HauntedHouse.ConsoleCommands;
 import HauntedHouse.Game.Difficulty;
 import HauntedHouse.Game.Game;
 import HauntedHouse.Game.Manual;
@@ -37,6 +38,7 @@ public class Menu {
             System.out.println("2 - Consultar Classificações");
             System.out.println("3 - Sair");
             System.out.println("------------------------------------------------");
+            System.out.println("Opção: ");
             opt = keyboard.nextLine();
 
             switch (opt) {
@@ -51,6 +53,7 @@ public class Menu {
                     break;
                 case "3":
                     exit = true;
+                    ConsoleCommands.clearConsole();
                     break;
                 default:
                     System.out.println("opção inválida");
@@ -81,11 +84,10 @@ public class Menu {
     /**
      * Asks the user what game type
      * he/she wants
-     *
      */
     private void chooseGameMenu() {
         boolean exit = false;
-
+        ConsoleCommands.clearConsole();
         try {
             while (!exit) {
                 System.out.println("------------------------------------------------");
@@ -93,6 +95,7 @@ public class Menu {
                 System.out.println("2 - Simulação");
                 System.out.println("3 - Voltar");
                 System.out.println("------------------------------------------------");
+                System.out.println("Opção: ");
                 opt = keyboard.nextLine();
 
                 switch (opt) {
@@ -104,6 +107,7 @@ public class Menu {
                         break;
                     case "3":
                         exit = true;
+                        ConsoleCommands.clearConsole();
                         break;
                     default:
                         System.out.println("Opção inválida");
@@ -122,11 +126,10 @@ public class Menu {
     /**
      * Asks the user the difficulty of
      * the game in manual and starts
-     *
      */
     private void difficultyManual() {
         boolean exit = false;
-
+        ConsoleCommands.clearConsole();
         try {
             while (!exit) {
                 System.out.println("------------------------------------------------");
@@ -136,6 +139,7 @@ public class Menu {
                 System.out.println("3 - Difícil");
                 System.out.println("4 - Voltar");
                 System.out.println("------------------------------------------------");
+                System.out.println("Opção: ");
                 opt = keyboard.nextLine();
 
                 switch (opt) {
@@ -153,6 +157,7 @@ public class Menu {
                         break;
                     case "4":
                         exit = true;
+                        ConsoleCommands.clearConsole();
                         break;
                     default:
                         System.out.println("Opção inválida");
@@ -167,11 +172,10 @@ public class Menu {
     /**
      * Asks the user the difficulty of
      * the game in simulation and starts
-     *
      */
     private void difficultySimulation() {
         boolean exit = false;
-
+        ConsoleCommands.clearConsole();
         try {
             while (!exit) {
                 System.out.println("------------------------------------------------");
@@ -181,6 +185,7 @@ public class Menu {
                 System.out.println("3 - Difícil");
                 System.out.println("4 - Voltar");
                 System.out.println("------------------------------------------------");
+                System.out.println("Opção: ");
                 opt = keyboard.nextLine();
 
                 switch (opt) {
@@ -198,6 +203,7 @@ public class Menu {
                         break;
                     case "4":
                         exit = true;
+                        ConsoleCommands.clearConsole();
                         break;
                     default:
                         System.out.println("Opção inválida");
@@ -226,7 +232,7 @@ public class Menu {
     private void chooseDifficultyRatings(String name) {
         String path = "ratings/" + name;
         boolean exit = false;
-
+        ConsoleCommands.clearConsole();
         while (!exit) {
             System.out.println("------------------------------------------------");
             System.out.println("Escolha a tabela de resultados da dificuldade que deseja: ");
@@ -235,6 +241,7 @@ public class Menu {
             System.out.println("3 - Difícil");
             System.out.println("4 - Voltar");
             System.out.println("------------------------------------------------");
+            System.out.println("Opção: ");
             opt = keyboard.nextLine();
 
             switch (opt) {
@@ -249,6 +256,7 @@ public class Menu {
                     break;
                 case "4":
                     exit = true;
+                    ConsoleCommands.clearConsole();
                     break;
                 default:
                     System.out.println("Opção inválida");
