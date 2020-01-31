@@ -101,7 +101,10 @@ public class Map {
         sourceRoom.addConnection(destRoom);
         networkMap.addEdge(sourceRoom, destRoom, destRoom.getGhostCost());
 
-        if (destRoom.getRoomName().equals(ENTRANCE) || destRoom.getRoomName().equals(EXIT)) {
+        if (destRoom.getRoomName().equals(ENTRANCE) && destRoom.numberOfDoors() == 0) {
+            destRoom.addConnection(sourceRoom);
+            networkMap.addEdge(destRoom, sourceRoom, sourceRoom.getGhostCost());
+        } else if (destRoom.getRoomName().equals(EXIT)) {
             destRoom.addConnection(sourceRoom);
             networkMap.addEdge(destRoom, sourceRoom, sourceRoom.getGhostCost());
         }
@@ -185,6 +188,7 @@ public class Map {
 
     /**
      * Method to show the path with least cost
+     *
      * @return Iterador
      * @throws BinaryTreeExceptions
      * @throws GraphExceptions
