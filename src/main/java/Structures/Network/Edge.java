@@ -2,7 +2,7 @@ package Structures.Network;
 
 /**
  * Edge class that defines graph edges
- * @param <T>
+ * @param <T> the type for the edge
  */
 public class Edge<T> {
 

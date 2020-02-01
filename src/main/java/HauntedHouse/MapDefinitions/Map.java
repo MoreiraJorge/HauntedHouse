@@ -79,6 +79,8 @@ public class Map {
 
     /**
      * Method for adding rooms to the map
+     * @param roomName the room name
+     * @param ghostCost the ghost cost
      */
     public void addRoomToMap(String roomName, int ghostCost) {
         Room room = new Room(roomName, ghostCost);
@@ -91,8 +93,8 @@ public class Map {
      *
      * @param source      connection starting point
      * @param destination connection arrival point
-     * @throws MapExceptions
-     * @throws GraphExceptions
+     * @throws MapExceptions MapExceptions
+     * @throws GraphExceptions GraphExceptions
      */
     public void addConnectionsBetweenRooms(String source, String destination) throws MapExceptions, GraphExceptions {
         Room sourceRoom = getRoomFromName(source);
@@ -115,7 +117,7 @@ public class Map {
      *
      * @param roomName room name
      * @return Room room
-     * @throws MapExceptions
+     * @throws MapExceptions MapExceptions if room not loaded
      */
     public Room getRoomFromName(String roomName) throws MapExceptions {
         boolean found = false;
@@ -153,8 +155,8 @@ public class Map {
      *
      * @param room      room
      * @param viewGhost boolean to view ghosts
-     * @throws MapExceptions
-     * @throws IOException
+     * @throws MapExceptions MapExceptions
+     * @throws IOException IOException
      */
     @Generated
     public void printMapFromRoom(String room, boolean viewGhost) throws MapExceptions, IOException {
@@ -190,9 +192,9 @@ public class Map {
      * Method to show the path with least cost
      *
      * @return Iterador
-     * @throws BinaryTreeExceptions
-     * @throws GraphExceptions
-     * @throws ListExceptions
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
+     * @throws GraphExceptions GraphExceptions
+     * @throws ListExceptions ListExceptions
      */
     @Generated
     public Iterator<Room> bestPathForMapIterator() throws BinaryTreeExceptions, GraphExceptions, ListExceptions {

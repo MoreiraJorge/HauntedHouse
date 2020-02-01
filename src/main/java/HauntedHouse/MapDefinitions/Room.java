@@ -21,7 +21,8 @@ public class Room {
     /**
      * Constructor for a room
      *
-     * @param roomName
+     * @param roomName the room name
+     * @param ghostCost the ghost cost
      */
     @Generated
     public Room(String roomName, int ghostCost) {
@@ -62,7 +63,7 @@ public class Room {
     /**
      * Method to add a connection between rooms
      *
-     * @param room
+     * @param room target room
      */
     public void addConnection(Room room) {
         connections.addToRear(room);
@@ -71,8 +72,8 @@ public class Room {
     /**
      * Method to remove a connection between rooms
      *
-     * @param room
-     * @throws ListExceptions
+     * @param room target room
+     * @throws ListExceptions ListExceptions
      */
     public void removeConnection(Room room) throws ListExceptions {
         connections.remove(room);
@@ -81,8 +82,8 @@ public class Room {
     /**
      * Method to check if this room has a connection to another
      *
-     * @param room
-     * @return boolean
+     * @param room target room
+     * @return boolean true if has connection, or false if doesnt
      */
     public boolean hasConnection(Room room) {
         return connections.contains(room);
@@ -110,8 +111,8 @@ public class Room {
     /**
      * Method to return String representation of all information about room
      *
-     * @param viewGhost
-     * @return
+     * @param viewGhost to view room ghost
+     * @return room doors
      */
     @Generated
     public String toString(boolean viewGhost) {

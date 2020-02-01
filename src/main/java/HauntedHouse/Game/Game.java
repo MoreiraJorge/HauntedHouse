@@ -18,6 +18,12 @@ public interface Game {
 
     /**
      * Method used to start the game
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
+     * @throws GraphExceptions GraphExceptions
+     * @throws ListExceptions ListExceptions
+     * @throws IOException IOException
+     * @throws MapExceptions MapExceptions
+     * @throws EmptyCollectionException EmptyCollectionException
      */
     public void startGame() throws BinaryTreeExceptions, GraphExceptions, ListExceptions, IOException, MapExceptions, EmptyCollectionException;
 

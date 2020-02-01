@@ -93,4 +93,16 @@ pmd {
     ]
 }
 
-test.finalizedBy(jacocoTestReport, jar)
+task srcJavadoc(type: Javadoc) {
+    source = sourceSets.main.allJava
+    classpath = sourceSets.main.compileClasspath
+    destinationDir = file("docs/sourceJavadoc")
+}
+
+task testsJavadoc(type: Javadoc) {
+    source = sourceSets.test.allJava
+    classpath = sourceSets.test.compileClasspath
+    destinationDir = file("docs/testsJavadoc")
+}
+
+test.finalizedBy(jacocoTestReport, jar, srcJavadoc, testsJavadoc)

@@ -7,6 +7,7 @@ public interface OrderedListADT<T> extends ListADT<T> {
      * the proper location
      *
      * @param element the element to be added to this list
+     * @throws ListExceptions ListExceptions
      */
     public void add(T element) throws ListExceptions;
 }

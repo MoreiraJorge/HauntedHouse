@@ -29,22 +29,29 @@ public class Player {
     private StackADT<Room> flashBack = new LinkedStack();
 
     /**
+     * Number of available flashbacks
+     */
+    private int numberOfFlashBacks;
+
+    /**
      * Player constructor
      *
-     * @param name
-     * @param mapPoints
+     * @param name the player name
+     * @param mapPoints the map points
+     * @param room the player current room
      */
     @Generated
     public Player(String name, int mapPoints, Room room) {
         this.name = name;
         this.playerPoints = mapPoints;
         this.flashBack.push(room);
+        this.numberOfFlashBacks = 3;
     }
 
     /**
      * Gets the player name
      *
-     * @return
+     * @return player name
      */
     @Generated
     public String getName() {
@@ -54,7 +61,7 @@ public class Player {
     /**
      * Method to get player points
      *
-     * @return
+     * @return player points
      */
     @Generated
     public int getPlayerPoints() {
@@ -64,7 +71,7 @@ public class Player {
     /**
      * Method to set player points
      *
-     * @param playerPoints
+     * @param playerPoints the player points
      */
     @Generated
     public void setPlayerPoints(int playerPoints) {
@@ -74,7 +81,7 @@ public class Player {
     /**
      * Method to move player on map
      *
-     * @param room
+     * @param room the destination room
      */
     public void makeMove(Room room) {
         flashBack.push(room);
@@ -83,13 +90,43 @@ public class Player {
     /**
      * Method to get the player current location
      *
-     * @return Room
-     * @throws EmptyCollectionException
+     * @return player current room
+     * @throws EmptyCollectionException EmptyCollectionException
      */
     @Generated
     public Room getCurrentRoom() throws EmptyCollectionException {
         return flashBack.peek();
     }
+  
+    /**
+     * Method to obtain the number of flashes available
+     *
+     * @return number of flashes
+     */
+    @Generated
+    public int getNumberOfFlashBacks() {
+        return numberOfFlashBacks;
+    }
 
+    /**
+     * Method to use flashback ability
+     *
+     * @param Diff difficulty
+     * @throws PlayerExceptions PlayerExceptions
+     * @throws EmptyCollectionException EmptyCollectionException
+     */
+    public void useFlashBack(int Diff) throws PlayerExceptions, EmptyCollectionException {
+        if (flashBack.size() > 1) {
+            if (numberOfFlashBacks > 0) {
+                Room tmpRoom = flashBack.pop();
+                this.playerPoints = this.playerPoints + (tmpRoom.getGhostCost() * Diff);
+                numberOfFlashBacks--;
+            } else {
+                throw new PlayerExceptions(PlayerExceptions.NUMBER_OF_FLASHBACK_IS_ZERO);
+            }
+        } else {
+            throw new PlayerExceptions(PlayerExceptions.FLASHBACK_CANNOT_BE_USED);
+        }
+    }
 
 }

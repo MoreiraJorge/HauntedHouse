@@ -8,6 +8,7 @@ public interface BinaryTreeADT<T> {
      * Returns a reference to the root element
      *
      * @return a reference to the root
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
      */
     public T getRoot() throws BinaryTreeExceptions;
 
@@ -31,6 +32,7 @@ public interface BinaryTreeADT<T> {
      *
      * @param targetElement the element being sought in the tree
      * @return true if the tree contains the target element
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
      */
     public boolean contains(T targetElement) throws BinaryTreeExceptions;
 
@@ -41,6 +43,7 @@ public interface BinaryTreeADT<T> {
      *
      * @param targetElement the element being sought in the tree
      * @return a reference to the specified element
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
      */
     public T find(T targetElement) throws BinaryTreeExceptions;
 
@@ -57,6 +60,7 @@ public interface BinaryTreeADT<T> {
      * overloaded, recursive inorder method that starts with the root.
      *
      * @return an iterator over the elements of this binary tree
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
      */
     public Iterator<T> iteratorInOrder() throws BinaryTreeExceptions;
 
@@ -66,6 +70,7 @@ public interface BinaryTreeADT<T> {
      * with the root.
      *
      * @return an iterator over the elements of this binary tree
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
      */
     public Iterator<T> iteratorPreOrder() throws BinaryTreeExceptions;
 
@@ -75,6 +80,7 @@ public interface BinaryTreeADT<T> {
      * method that starts with the root.
      *
      * @return an iterator over the elements of this binary tree
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
      */
     public Iterator<T> iteratorPostOrder() throws BinaryTreeExceptions;
 
@@ -83,6 +89,7 @@ public interface BinaryTreeADT<T> {
      * using a queue.
      *
      * @return an iterator over the elements of this binary tree
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
      */
     public Iterator<T> iteratorLevelOrder() throws BinaryTreeExceptions;
 

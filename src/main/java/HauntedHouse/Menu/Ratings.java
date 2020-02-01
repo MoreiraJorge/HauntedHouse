@@ -24,8 +24,8 @@ public class Ratings {
     /**
      * add a player result to the result list
      *
-     * @param res
-     * @throws ListExceptions
+     * @param res the player results
+     * @throws ListExceptions ListExceptions
      */
     public static void addResult(Result res) throws ListExceptions {
         resultList.add(res);
@@ -37,7 +37,6 @@ public class Ratings {
      *
      * @param mapTitle   map title
      * @param difficulty game difficulty
-     * @throws IOException
      */
     public static void writeToRatingsFile(String mapTitle, int difficulty) {
         try {
@@ -95,6 +94,8 @@ public class Ratings {
 
     /**
      * prints the ratings of a map to the screen
+     * @param mapTitle the map title
+     * @param difficulty the game difficulty
      */
     public static void PrintRatingFile(String mapTitle, int difficulty) {
         try {

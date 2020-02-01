@@ -26,6 +26,7 @@ public interface UnorderedListADT<T> extends ListADT<T> {
      * the proper location
      * @param element the element to be added to this list
      * @param target the element to be previous to the added
+     * @throws ListExceptions ListExceptions
      */
     public void addAfter(T element, T target) throws ListExceptions;
 

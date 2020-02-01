@@ -21,8 +21,8 @@ public class Result implements Comparable {
 
     /**
      * Constructor
-     * @param playerName
-     * @param playerPoints
+     * @param playerName the player name
+     * @param playerPoints the player points
      */
     @Generated
     public Result(String playerName, int playerPoints) {
