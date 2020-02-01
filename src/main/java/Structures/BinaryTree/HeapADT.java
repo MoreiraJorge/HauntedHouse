@@ -13,6 +13,7 @@ public interface HeapADT<T> extends BinaryTreeADT<T> {
      * Removes element with the lowest value from this heap.
      *
      * @return the element with the lowest value from this heap
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
      */
     public T removeMin() throws BinaryTreeExceptions;
 

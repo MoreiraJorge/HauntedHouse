@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Test class for addConnectionsBetweenRooms
  * method
+ *
  * @author Jorge, Miguel
  */
 public class addConnectionsBetweenRoomsTests {
@@ -20,6 +21,10 @@ public class addConnectionsBetweenRoomsTests {
 
     /**
      * test cases setup
+     *
+     * @throws GraphExceptions   GraphExceptions
+     * @throws MapFileExceptions MapFileExceptions
+     * @throws MapExceptions     MapExceptions
      */
     @BeforeEach
     public void testSetup() throws GraphExceptions, MapFileExceptions, MapExceptions {
@@ -33,8 +38,8 @@ public class addConnectionsBetweenRoomsTests {
      * an exception when a room is invalid
      */
     @Test
-    public void testIfAnExceptionIsThrownWhenARoomIsInvalid(){
-        Assertions.assertThrows(MapExceptions.class, () ->{
+    public void testIfAnExceptionIsThrownWhenARoomIsInvalid() {
+        Assertions.assertThrows(MapExceptions.class, () -> {
             map.addConnectionsBetweenRooms("hall", "x");
         });
     }

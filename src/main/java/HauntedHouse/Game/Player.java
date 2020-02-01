@@ -36,8 +36,9 @@ public class Player {
     /**
      * Player constructor
      *
-     * @param name
-     * @param mapPoints
+     * @param name the player name
+     * @param mapPoints the map points
+     * @param room the player current room
      */
     @Generated
     public Player(String name, int mapPoints, Room room) {
@@ -50,7 +51,7 @@ public class Player {
     /**
      * Gets the player name
      *
-     * @return
+     * @return player name
      */
     @Generated
     public String getName() {
@@ -60,7 +61,7 @@ public class Player {
     /**
      * Method to get player points
      *
-     * @return
+     * @return player points
      */
     @Generated
     public int getPlayerPoints() {
@@ -70,7 +71,7 @@ public class Player {
     /**
      * Method to set player points
      *
-     * @param playerPoints
+     * @param playerPoints the player points
      */
     @Generated
     public void setPlayerPoints(int playerPoints) {
@@ -80,7 +81,7 @@ public class Player {
     /**
      * Method to move player on map
      *
-     * @param room
+     * @param room the destination room
      */
     public void makeMove(Room room) {
         flashBack.push(room);
@@ -89,8 +90,8 @@ public class Player {
     /**
      * Method to get the player current location
      *
-     * @return Room
-     * @throws EmptyCollectionException
+     * @return player current room
+     * @throws EmptyCollectionException EmptyCollectionException
      */
     @Generated
     public Room getCurrentRoom() throws EmptyCollectionException {
@@ -111,8 +112,8 @@ public class Player {
      * Method to use flashback ability
      *
      * @param Diff difficulty
-     * @throws PlayerExceptions
-     * @throws EmptyCollectionException
+     * @throws PlayerExceptions PlayerExceptions
+     * @throws EmptyCollectionException EmptyCollectionException
      */
     public void useFlashBack(int Diff) throws PlayerExceptions, EmptyCollectionException {
         if (flashBack.size() > 1) {

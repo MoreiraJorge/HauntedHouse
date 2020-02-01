@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Test class for createMapStructure method
+ *
  * @author Jorge , Miguel
  */
 public class createMapStructureTests {
@@ -30,8 +31,8 @@ public class createMapStructureTests {
      * is invalid
      */
     @Test
-    public void TestCreateAnInvalidMapStructure(){
-        Assertions.assertThrows(MapFileExceptions.class, () ->{
+    public void TestCreateAnInvalidMapStructure() {
+        Assertions.assertThrows(MapFileExceptions.class, () -> {
             mapFile.createMapStructure();
         });
     }
@@ -39,9 +40,10 @@ public class createMapStructureTests {
     /**
      * test if the map structure is created when a valid map
      * is loaded
-     * @throws GraphExceptions
-     * @throws MapFileExceptions
-     * @throws MapExceptions
+     *
+     * @throws GraphExceptions   GraphExceptions
+     * @throws MapFileExceptions MapFileExceptions
+     * @throws MapExceptions     MapExceptions
      */
     @Test
     public void TestCreateAValidMapStructure() throws GraphExceptions, MapFileExceptions, MapExceptions {
@@ -49,7 +51,6 @@ public class createMapStructureTests {
         map = mapFile.createMapStructure();
         Assertions.assertNotNull(map);
     }
-
 
 
 }

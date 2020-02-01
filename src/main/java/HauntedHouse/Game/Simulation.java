@@ -28,8 +28,8 @@ public class Simulation implements Game {
     /**
      * Default Simulation Contructor
      *
-     * @param mp
-     * @param tmpDiff
+     * @param mp the game map
+     * @param tmpDiff the game difficulty
      */
     public Simulation(Map mp, Difficulty tmpDiff) {
         map = mp;

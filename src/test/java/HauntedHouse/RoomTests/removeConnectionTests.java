@@ -27,6 +27,8 @@ public class removeConnectionTests {
 
     /**
      * test if a connection to a room is removed
+     *
+     * @throws ListExceptions ListExceptions
      */
     @Test
     public void testIfTheConnectionToARoomWasRemoved() throws ListExceptions {

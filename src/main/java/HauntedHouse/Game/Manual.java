@@ -30,8 +30,9 @@ public class Manual implements Game {
     /**
      * Manual Gamemode constructor
      *
-     * @param mp
-     * @param tmpDiff
+     * @param mp      the game map
+     * @param tmpDiff the game difficulty
+     * @throws IOException IOException
      */
     public Manual(Map mp, Difficulty tmpDiff) throws IOException {
         map = mp;
@@ -53,7 +54,7 @@ public class Manual implements Game {
             System.out.println();
             this.showPlayerPoints();
             System.out.println("------------------------------------------------");
-            if(player.getCurrentRoom().getRoomName().equalsIgnoreCase(Map.ENTRANCE) == false){
+            if (player.getCurrentRoom().getRoomName().equalsIgnoreCase(Map.ENTRANCE) == false) {
                 this.askFlashback();
             }
             this.nextMove();
@@ -63,7 +64,7 @@ public class Manual implements Game {
             }
             System.out.println("------------------------------------------------");
             ConsoleCommands.clearConsole();
-    }
+        }
 
         Result result = new Result(player.getName(), player.getPlayerPoints());
         Ratings.addResult(result);

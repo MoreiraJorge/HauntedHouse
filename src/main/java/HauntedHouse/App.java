@@ -23,7 +23,8 @@ public class App {
     /**
      * Main method
      *
-     * @param args
+     * @param args main args
+     * @throws IOException IOException
      */
     @Generated
     public static void main(String[] args) throws IOException{

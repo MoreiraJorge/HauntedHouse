@@ -9,11 +9,13 @@ public interface StackADT<T> {
 
     /** Removes and returns the top element from this stack.
      * @return T element removed from the top of the stack
+     * @throws EmptyCollectionException EmptyCollectionException
      */
     public T pop() throws EmptyCollectionException;
 
     /** Returns without removing the top element of this stack.
      * @return T element on top of the stack
+     * @throws EmptyCollectionException EmptyCollectionException
      */
     public T peek() throws EmptyCollectionException;
 

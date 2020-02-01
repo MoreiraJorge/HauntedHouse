@@ -19,6 +19,8 @@ public interface GraphADT<T> {
      * Removes a single vertex with the given value from this graph.
      *
      * @param vertex the vertex to be removed from this graph
+     * @throws GraphExceptions GraphExceptions
+     * @throws ListExceptions  ListExceptions
      */
     public void removeVertex(T vertex) throws GraphExceptions, ListExceptions;
 
@@ -27,6 +29,7 @@ public interface GraphADT<T> {
      *
      * @param vertex1 the first vertex
      * @param vertex2 the second vertex
+     * @throws GraphExceptions GraphExceptions
      */
     public void addEdge(T vertex1, T vertex2) throws GraphExceptions;
 
@@ -35,6 +38,8 @@ public interface GraphADT<T> {
      *
      * @param vertex1 the first vertex
      * @param vertex2 the second vertex
+     * @throws GraphExceptions GraphExceptions
+     * @throws ListExceptions  ListExceptions
      */
     public void removeEdge(T vertex1, T vertex2) throws GraphExceptions, ListExceptions;
 
@@ -53,6 +58,7 @@ public interface GraphADT<T> {
      * @param startVertex the starting vertex
      * @return a depth first iterator starting at the
      * given vertex
+     * @throws EmptyCollectionException EmptyCollectionException
      */
     public Iterator iteratorDFS(T startVertex) throws EmptyCollectionException;
 
@@ -60,10 +66,13 @@ public interface GraphADT<T> {
      * Returns an iterator that contains the shortest path between
      * the two vertices.
      *
-     * @param startVertex the starting vertex
+     * @param startVertex  the starting vertex
      * @param targetVertex the ending vertex
      * @return an iterator that contains the shortest
      * path between the two vertices
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
+     * @throws GraphExceptions      GraphExceptions
+     * @throws ListExceptions       ListExceptions
      */
     public Iterator iteratorShortestPath(T startVertex, T targetVertex) throws BinaryTreeExceptions, GraphExceptions, ListExceptions;
 
@@ -78,6 +87,8 @@ public interface GraphADT<T> {
      * Returns true if this graph is connected, false otherwise.
      *
      * @return true if this graph is connected
+     * @throws GraphExceptions GraphExceptions
+     * @throws ListExceptions ListExceptions
      */
     public boolean isConnected() throws GraphExceptions, ListExceptions;
 

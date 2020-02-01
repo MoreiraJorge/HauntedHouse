@@ -27,7 +27,7 @@ public class Menu {
     /**
      * Game main menu
      *
-     * @throws IOException
+     * @throws IOException IOException
      */
     public void mainMenu() throws IOException {
         boolean exit = false;

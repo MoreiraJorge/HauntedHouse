@@ -43,6 +43,9 @@ public class useFlashBackTests {
 
     /**
      * Test to see if the work of the method useFlashBack is done correctly
+     *
+     * @throws EmptyCollectionException EmptyCollectionException
+     * @throws PlayerExceptions PlayerExceptions
      */
     @Test
     public void useFlashWhenValidTest() throws EmptyCollectionException, PlayerExceptions {
@@ -54,6 +57,9 @@ public class useFlashBackTests {
     /**
      * Test to see if is returned an exception when numberOfFlashes is zero
      * and the user calls the method useFlashBack
+     *
+     * @throws EmptyCollectionException EmptyCollectionException
+     * @throws PlayerExceptions PlayerExceptions
      */
     @Test
     public void useFlashWhenNumberOfFlashIsZeroTest() throws EmptyCollectionException, PlayerExceptions {

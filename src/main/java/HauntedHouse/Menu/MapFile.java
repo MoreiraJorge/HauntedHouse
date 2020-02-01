@@ -69,9 +69,9 @@ public class MapFile {
      * Method to create the network graph of the map
      *
      * @return Map
-     * @throws MapFileExceptions
-     * @throws GraphExceptions
-     * @throws MapExceptions
+     * @throws MapFileExceptions MapFileExceptions
+     * @throws GraphExceptions GraphExceptions
+     * @throws MapExceptions MapExceptions
      */
     public Map createMapStructure() throws MapFileExceptions,
             GraphExceptions, MapExceptions {
