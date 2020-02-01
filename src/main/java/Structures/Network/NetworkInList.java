@@ -17,6 +17,9 @@ public class NetworkInList<T> implements NetworkADT<T> {
     protected int numVertices;
     protected UnorderedListADT<NetworkNode<T>> nodesList;
 
+    /**
+     * Network in list constructor
+     */
     public NetworkInList() {
         this.numVertices = 0;
         this.nodesList = new UnorderedArray<>();
@@ -60,6 +63,13 @@ public class NetworkInList<T> implements NetworkADT<T> {
         numVertices--;
     }
 
+    /**
+     * returns the node which has the target vertex
+     *
+     * @param targetVertex the target vertex
+     * @return a network node
+     * @throws GraphExceptions GraphExceptions
+     */
     protected NetworkNode<T> getNode(T targetVertex) throws GraphExceptions {
         boolean found = false;
         NetworkNode<T> node = null;
@@ -226,6 +236,16 @@ public class NetworkInList<T> implements NetworkADT<T> {
         }
     }
 
+    /**
+     * finds and returns the last pair with the last
+     * vertex from the shortes past and the cost to the vertex
+     *
+     * @param startVertex the start vertex
+     * @param targetVertex the target vertex
+     * @return a pair with the final vertex and cost
+     * @throws BinaryTreeExceptions BinaryTreeExceptions
+     * @throws GraphExceptions GraphExceptions
+     */
     private Pair<T> findLastPairInShortestPair(T startVertex, T targetVertex) throws BinaryTreeExceptions, GraphExceptions {
         PriorityQueue<Pair<T>> priorityQueue = new PriorityQueue<Pair<T>>();
         UnorderedListADT<T> verticesInPath = new UnorderedArray<>();
